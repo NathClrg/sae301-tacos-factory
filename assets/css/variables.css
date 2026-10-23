@@ -1,0 +1,68 @@
+/* =========================================================================
+   TACOS FACTORY — VARIABLES
+   Reprises des variables Figma (collection « Tacos Factory ») :
+   couleur/rouge (Figma) → --couleur-rouge (CSS).
+   Les tailles de la maquette mobile (375 px de large) sont gardées en px.
+   ========================================================================= */
+
+:root {
+	/* Couleurs */
+	--couleur-rouge: #da231e;
+	--couleur-rouge-fonce: #b81b17;
+	--couleur-rouge-clair: #fdecea;
+	--couleur-rose: #fff8f7;           /* carte de choix sélectionnée */
+	--couleur-noir: #111111;
+	--couleur-texte: #555555;
+	--couleur-gris: #9b938e;
+	--couleur-blanc: #ffffff;
+	--couleur-creme: #f6f4f3;
+	--couleur-sable: #f3eeeb;
+	--couleur-pierre: #f1eeec;         /* badge « Optionnel », étape à venir */
+	--couleur-bordure: #ddd6d2;
+	--couleur-ligne: #ece7e4;
+	--couleur-controle: #bdb6b2;
+	--couleur-vert: #1e9e4a;
+	--couleur-degrade-noir: rgba(0, 0, 0, 0.72);
+	--couleur-degrade-rouge: rgba(227, 6, 19, 0.6);
+
+	/* Espacements */
+	--espace-xs: 4px;
+	--espace-s: 8px;
+	--espace-m: 12px;
+	--espace-l: 16px;
+	--espace-xl: 20px;
+	--espace-2xl: 24px;
+	--espace-3xl: 32px;
+	--espace-4xl: 48px;
+
+	/* Rayons */
+	--rayon-s: 6px;
+	--rayon-m: 12px;
+	--rayon-l: 16px;
+	--rayon-pilule: 25px;
+	--rayon-rond: 999px;
+
+	/* Polices */
+	--police-titre: "Anton", Impact, sans-serif;
+	--police-texte: "Inter", Arial, sans-serif;
+	--police-surtitre: "Hubot Sans", "Inter", Arial, sans-serif;
+
+	/* Ombres (styles d'effet Figma « Ombre/… ») */
+	--ombre-carte: 3px 4px 2px rgba(0, 0, 0, 0.25);
+	--ombre-header: 0 4px 2px rgba(0, 0, 0, 0.25);
+	--ombre-bouton-rond: 0 2px 4px rgba(0, 0, 0, 0.25);
+	--ombre-barre: 0 -4px 16px rgba(0, 0, 0, 0.08);
+
+	/* Mise en page */
+	--hauteur-entete: 66px;            /* maquette : 110 px dont 44 px de barre d'état iPhone */
+	--marge-page: 20px;
+	--largeur-max: 1064px;
+	--largeur-tunnel: 640px;           /* panier, paiement, confirmation sur ordinateur */
+}
+
+@media (min-width: 960px) {
+	:root {
+		--hauteur-entete: 110px;
+		--marge-page: 32px;
+	}
+}

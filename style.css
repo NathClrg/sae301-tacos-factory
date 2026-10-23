@@ -1,0 +1,19 @@
+/*
+Theme Name:   Tacos Factory
+Theme URI:    https://tacosfactory-limoges.fr
+Description:  Thème enfant de Storefront pour Tacos Factory Limoges — Click & Collect (WooCommerce, Secure Custom Fields, Classic Editor). Maquette : CLERGE Nathan — Tacos Factory (Figma).
+Author:       Nathan Clergé
+Template:     storefront
+Version:      1.0.0
+Requires at least: 6.4
+Requires PHP: 7.4
+License:      GNU General Public License v2 or later
+License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  tacos-factory
+Tags:         e-commerce, woocommerce, restaurant, click-and-collect
+*/
+
+/*
+ * Les styles du thème sont dans assets/css/theme.css (chargé après Storefront
+ * et versionné automatiquement). Ce fichier ne sert qu'à déclarer le thème.
+ */
