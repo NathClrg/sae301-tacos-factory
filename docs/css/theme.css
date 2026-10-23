@@ -1,0 +1,3359 @@
+/* =========================================================================
+   TACOS FACTORY — thème enfant de Storefront
+   Classes BEM : .bloc, .bloc__element, .bloc--modificateur
+   Mesures reprises de la maquette Figma mobile (375 px), en px.
+   Couleurs et espacements : assets/css/variables.css
+
+   Sommaire
+   1.  Base
+   2.  Corrections Storefront
+   3.  Petits blocs : accent, surtitre, retour, titres, notes, champs
+   4.  Bouton, badge, barre d'action fixe
+   5.  Cases, ronds et quantité
+   6.  Entête (header) et menu plein écran
+   7.  Pied (footer)
+   8.  Accueil : hero, nouveautés, produit star, à propos
+   9.  La carte : pastilles, sections, cartes produit
+   10. Tuile produit et état du stock
+   11. Fiche produit
+   12. Fenêtre « Ajouté au panier ! »
+   13. Panier
+   14. Paiement
+   15. Confirmation et suivi de commande
+   16. Barre « Ma commande »
+   17. Messages WooCommerce, boutique
+   18. Ordinateur
+   ========================================================================= */
+
+
+/* 1. BASE ================================================================= */
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-noir);
+	font-family: var(--police-texte);
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+}
+
+a {
+	color: var(--couleur-rouge);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--couleur-rouge-fonce);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	color: var(--couleur-noir);
+	font-family: var(--police-titre);
+	font-weight: 400;
+	letter-spacing: 0;
+}
+
+p {
+	margin: 0;
+}
+
+/* Storefront ajoute une grande marge au titre qui suit un paragraphe */
+:is(p, ul, ol, table, blockquote) + :is(h1, h2, h3, h4, h5, h6) {
+	margin-top: 0;
+}
+
+/* Lien « Modifier » de Storefront sous les pages (admin seulement) */
+.edit-link {
+	display: none;
+}
+
+/* Fenêtre ou menu ouvert : la page ne défile plus derrière */
+.ajout-ouvert {
+	overflow: hidden;
+}
+
+
+/* 2. CORRECTIONS STOREFRONT =============================================== */
+
+/* Storefront met « overflow-x: hidden » sur .site et sur div.product :
+   les éléments collants (header, barre « Ajouter ») défilaient avec la page. */
+.site,
+.single-product div.product {
+	overflow: visible;
+}
+
+/* Storefront ajoute aussi une marge sur téléphone : la marge de la page
+   se faisait deux fois. */
+.col-full {
+	max-width: var(--largeur-max);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--marge-page);
+	padding-right: var(--marge-page);
+}
+
+.site-main {
+	margin-bottom: 0;
+}
+
+.hentry {
+	margin: 0;
+}
+
+.hentry .entry-content a {
+	text-decoration: none;
+}
+
+/* Accueil : le hero prend toute la largeur de l'écran */
+.home .site-content > .col-full {
+	max-width: none;
+	padding: 0;
+}
+
+/* Pages avec la barre fixe en bas (« Ajouter », « Passer au paiement »,
+   « Payer ») : de la place sous le contenu. */
+.single-product .site-main,
+.woocommerce-cart .site-main,
+.woocommerce-checkout:not(.woocommerce-order-received) .site-main {
+	padding-bottom: 110px;
+}
+
+
+/* 3. PETITS BLOCS ========================================================= */
+
+/* Mot en rouge dans un titre : « Mon <span class="accent">panier</span> » */
+.accent {
+	color: var(--couleur-rouge);
+}
+
+/* « NOS TACOS », « CLICK & COLLECT », « ÉTAPE 2 SUR 3 » */
+.surtitre {
+	color: var(--couleur-rouge);
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 2.5px;
+	line-height: 1.25;
+	text-transform: uppercase;
+}
+
+/* « Notre Carte » */
+.surtitre--minuscules {
+	font-family: var(--police-surtitre);
+	letter-spacing: 0.23em;
+	text-transform: none;
+}
+
+/* « ← Retour à la carte » */
+.retour {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 14px 0;
+	color: var(--couleur-texte);
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 16px;
+}
+
+.retour:hover {
+	color: var(--couleur-noir);
+}
+
+/* Titre des pages du tunnel : « Mon panier », « Paiement » */
+.page-titre {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 4px 0 18px;
+}
+
+.page-titre__titre {
+	font-size: 35px;
+	line-height: 1.3;
+}
+
+.page-titre__texte {
+	color: var(--couleur-texte);
+	font-size: 14px;
+	line-height: 21px;
+}
+
+/* Titres de section : « Un petit dessert ? », « Réception »… */
+.titre-section {
+	font-size: 20px;
+	line-height: 1.3;
+}
+
+/* « Code promo », « Souvent pris avec », « Avis clients » */
+.titre-section--grand {
+	font-size: 22px;
+	line-height: 1.5;
+}
+
+.titre-section__aide {
+	margin-top: -10px;
+	color: var(--couleur-gris);
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+/* Section séparée par une bande crème de 8 px sur toute la largeur */
+.section-tunnel {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin: 0 calc(var(--marge-page) * -1);
+	padding: 22px var(--marge-page);
+	border-top: 8px solid var(--couleur-creme);
+}
+
+.icone {
+	display: block;
+	flex-shrink: 0;
+}
+
+/* Produit sans photo : fond sable + icône */
+.visuel-vide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	background-color: var(--couleur-sable);
+	color: var(--couleur-controle);
+}
+
+/* Petite ligne d'info avec icône : « On vous envoie un SMS… » */
+.note {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.note--claire {
+	color: var(--couleur-gris);
+}
+
+.note--encadre {
+	align-items: flex-start;
+	gap: 10px;
+	padding: 14px;
+	border-radius: var(--rayon-l);
+	background-color: var(--couleur-creme);
+}
+
+.note .icone {
+	color: var(--couleur-texte);
+}
+
+/* Champ de formulaire : libellé + saisie (composant Figma « Champ ») */
+.champ {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin: 0;
+}
+
+.champ__label {
+	color: var(--couleur-texte);
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 15px;
+}
+
+.champ__label--fonce {
+	color: var(--couleur-noir);
+}
+
+.champ__aide {
+	color: var(--couleur-gris);
+	font-size: 12px;
+	line-height: 15px;
+}
+
+/* Champ avec un élément à droite (logo VISA, icône carte) */
+.champ__groupe {
+	position: relative;
+	display: block;
+}
+
+.champ__groupe .visa,
+.champ__groupe .icone {
+	position: absolute;
+	top: 50%;
+	right: 14px;
+	transform: translateY(-50%);
+	color: var(--couleur-texte);
+}
+
+.champ__saisie--majuscules {
+	text-transform: uppercase;
+}
+
+.champ__saisie--erreur,
+.champ__saisie--erreur:focus {
+	border-color: var(--couleur-rouge);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+textarea,
+select {
+	width: 100%;
+	height: 48px;
+	padding: 0 14px;
+	border: 1px solid var(--couleur-bordure);
+	border-radius: var(--rayon-m);
+	background-color: var(--couleur-blanc);
+	box-shadow: none;
+	color: var(--couleur-noir);
+	font-size: 15px;
+}
+
+textarea {
+	height: 84px;
+	padding: 14px;
+	font-size: 14px;
+}
+
+::placeholder {
+	color: #9c9490;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	border-color: var(--couleur-noir);
+	outline: none;
+	background-color: var(--couleur-blanc);
+}
+
+/* Logo « VISA » */
+.visa {
+	padding: 3px 8px;
+	border: 1px solid var(--couleur-bordure);
+	border-radius: var(--rayon-s);
+	background-color: var(--couleur-blanc);
+	color: #1a1f71;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	line-height: 15px;
+}
+
+
+/* 4. BOUTON, BADGE, BARRE D'ACTION ======================================== */
+
+/* Composant Figma « Bouton » : pilule de 51 px de haut */
+.bouton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-height: 51px;
+	padding: 0 28px;
+	border: 1px solid transparent;
+	border-radius: var(--rayon-pilule);
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.2;
+	text-align: center;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+/* Chaque variante redonne ses couleurs au survol : sinon c'est le
+   « button:hover » gris de Storefront qui s'applique. */
+.bouton--primaire,
+.bouton--primaire:hover {
+	border-color: var(--couleur-rouge);
+	background-color: var(--couleur-rouge);
+	color: var(--couleur-blanc);
+}
+
+.bouton--primaire:hover {
+	border-color: var(--couleur-rouge-fonce);
+	background-color: var(--couleur-rouge-fonce);
+}
+
+.bouton--secondaire,
+.bouton--secondaire:hover {
+	border-color: var(--couleur-noir);
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-noir);
+}
+
+.bouton--secondaire:hover {
+	background-color: var(--couleur-creme);
+}
+
+.bouton--sombre,
+.bouton--sombre:hover {
+	border-color: var(--couleur-noir);
+	background-color: var(--couleur-noir);
+	color: var(--couleur-blanc);
+}
+
+/* Contour blanc, sur la photo du hero */
+.bouton--contour,
+.bouton--contour:hover {
+	border-color: var(--couleur-blanc);
+	background-color: transparent;
+	color: var(--couleur-blanc);
+}
+
+.bouton--contour:hover {
+	background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* « Annuler ma commande » : rouge sur blanc */
+.bouton--annuler,
+.bouton--annuler:hover {
+	border-color: var(--couleur-rouge);
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-rouge);
+}
+
+.bouton--annuler:hover {
+	background-color: var(--couleur-creme);
+}
+
+.bouton--large {
+	display: flex;
+	width: 100%;
+}
+
+/* « Appeler le restaurant » */
+.bouton--petit {
+	min-height: 44px;
+	font-size: 14px;
+}
+
+/* Autres boutons WooCommerce (« Voir la carte »…) */
+.woocommerce .button,
+.woocommerce .button:hover {
+	border-radius: var(--rayon-pilule);
+	background-color: var(--couleur-rouge);
+	color: var(--couleur-blanc);
+}
+
+/* Badge : pilule de 21 à 24 px */
+.badge {
+	display: inline-block;
+	padding: 5px 10px;
+	border-radius: var(--rayon-rond);
+	background-color: var(--couleur-pierre);
+	color: var(--couleur-texte);
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 13px;
+	white-space: nowrap;
+}
+
+.badge--obligatoire {
+	background-color: var(--couleur-rouge-clair);
+	color: var(--couleur-rouge);
+}
+
+/* « 2/2 ✓ » quand le maximum de choix est atteint (theme.js) */
+.badge--complet {
+	background-color: var(--couleur-noir);
+	color: var(--couleur-blanc);
+}
+
+/* « BEST-SELLER », « NOUVEAU », et choix obligatoire oublié (theme.js) */
+.badge--promo,
+.badge--erreur {
+	background-color: var(--couleur-rouge);
+	color: var(--couleur-blanc);
+	text-transform: uppercase;
+}
+
+.badge--promo {
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+/* « ACHAT VÉRIFIÉ » */
+.badge--verifie {
+	border: 1px solid var(--couleur-vert);
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-vert);
+	text-transform: uppercase;
+}
+
+/* Barre blanche fixée en bas de l'écran : « Ajouter », « Passer au
+   paiement », « Payer » (composant Figma « Bouton ajouter ») */
+.barre-action {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 90;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 14px var(--marge-page) 30px;
+	background-color: var(--couleur-blanc);
+	box-shadow: var(--ombre-barre);
+}
+
+
+/* 5. CASES, RONDS ET QUANTITÉ ============================================= */
+
+/* Case à cocher (22 px, coins 6 px) et rond (22 px) de la maquette,
+   dessinés directement sur le champ (appearance: none). */
+.option__input,
+.choix__input,
+.moyen__input,
+.case input {
+	flex-shrink: 0;
+	width: 22px;
+	height: 22px;
+	margin: 0;
+	border: 1.5px solid var(--couleur-controle);
+	border-radius: var(--rayon-s);
+	background: var(--couleur-blanc) center / 16px no-repeat;
+	appearance: none;
+	cursor: pointer;
+}
+
+.option__input[type="radio"],
+.choix__input,
+.moyen__input {
+	border-radius: 50%;
+}
+
+.option__input:checked,
+.case input:checked {
+	border-color: var(--couleur-rouge);
+	background-color: var(--couleur-rouge);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+}
+
+/* Rond coché : bord rouge et point rouge de 12 px */
+.option__input[type="radio"]:checked,
+.choix__input:checked,
+.moyen__input:checked {
+	border-color: var(--couleur-rouge);
+	background: radial-gradient(var(--couleur-rouge) 5.5px, var(--couleur-blanc) 6.5px);
+}
+
+.option__input:focus-visible,
+.choix__input:focus-visible,
+.moyen__input:focus-visible {
+	outline: 2px solid var(--couleur-noir);
+	outline-offset: 2px;
+}
+
+/* Quantité « − 1 + » : .quantity vient de WooCommerce,
+   les boutons − / + sont ajoutés par theme.js */
+.quantity {
+	display: inline-flex;
+	flex-shrink: 0;
+	align-items: center;
+	height: 44px;
+	border: 1px solid var(--couleur-bordure);
+	border-radius: 22px;
+	background-color: var(--couleur-blanc);
+}
+
+.quantity .qty {
+	width: 20px;
+	height: auto;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	-moz-appearance: textfield;
+}
+
+.quantity .qty::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+.quantite__bouton,
+.quantite__bouton:hover {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	border-radius: 50%;
+	background: none;
+	color: var(--couleur-noir);
+}
+
+.quantite__bouton--plus,
+.quantite__bouton--plus:hover {
+	color: var(--couleur-rouge);
+}
+
+.quantite__bouton:disabled {
+	opacity: 0.3;
+}
+
+
+/* 6. ENTÊTE (header) ET MENU ============================================== */
+
+/* Hauteur de la barre d'administration WordPress (visible une fois
+   connecté) : le header se colle juste en dessous. */
+.admin-bar {
+	--barre-admin: 46px;
+}
+
+@media (min-width: 783px) {
+	.admin-bar {
+		--barre-admin: 32px;
+	}
+}
+
+@media (max-width: 600px) {
+	.admin-bar {
+		--barre-admin: 0px;
+	}
+}
+
+.site-header {
+	position: sticky;
+	top: var(--barre-admin, 0px);
+	z-index: 100;
+	padding: 0;
+	border: 0;
+	background-color: var(--couleur-creme);
+	box-shadow: var(--ombre-header);
+}
+
+/* L'id passe devant la marge que Storefront ajoute sous le header de l'accueil */
+#masthead {
+	margin-bottom: 0;
+}
+
+.entete {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: var(--hauteur-entete);
+	padding: 0 40px;
+}
+
+/* Storefront ajoute un ::before / ::after vides sur .col-full : ils
+   compteraient comme des éléments du flex. */
+.entete::before,
+.entete::after {
+	content: none;
+}
+
+.entete__logo img {
+	display: block;
+	width: 34px;
+	height: 40px;
+	object-fit: contain;
+}
+
+.entete__nav,
+.entete__compte,
+.entete__panier-texte {
+	display: none;
+}
+
+.entete__actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.entete__panier {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	color: var(--couleur-noir);
+}
+
+/* Le panier n'apparaît pas dans le header de l'accueil (maquette 11) */
+.home .entete__panier {
+	display: none;
+}
+
+/* Nombre d'articles, mis à jour en AJAX par WooCommerce */
+.entete__compteur {
+	position: absolute;
+	top: -2px;
+	right: -4px;
+	min-width: 19px;
+	padding: 2px 5px;
+	border: 2px solid var(--couleur-creme);
+	border-radius: 10px;
+	background-color: var(--couleur-rouge);
+	color: var(--couleur-blanc);
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 13px;
+	text-align: center;
+}
+
+.entete__burger,
+.entete__burger:hover {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	background: none;
+	color: var(--couleur-noir);
+}
+
+.entete__icone-fermer,
+.menu-ouvert .entete__icone-ouvrir {
+	display: none;
+}
+
+.menu-ouvert .entete__icone-fermer {
+	display: block;
+}
+
+/* Menu plein écran (maquette « 10 Menu ») */
+.menu {
+	display: none;
+	position: fixed;
+	top: calc(var(--barre-admin, 0px) + var(--hauteur-entete));
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 20px 20px 34px;
+	overflow-y: auto;
+	background-color: var(--couleur-blanc);
+}
+
+.menu-ouvert .menu {
+	display: block;
+}
+
+/* Carte rouge « Ma commande en cours » */
+.menu__commande {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-bottom: 6px;
+	padding: 16px;
+	border-radius: 18px;
+	background-color: var(--couleur-rouge);
+	color: var(--couleur-blanc);
+}
+
+.menu__commande-entete {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.menu__commande-titre {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+.menu__commande-numero {
+	padding: 4px 8px;
+	border-radius: 10px;
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-rouge);
+	font-size: 11px;
+	font-weight: 700;
+}
+
+.menu__commande-statut {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.menu__commande-icone {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-rouge);
+}
+
+.menu__commande-heure {
+	font-family: var(--police-titre);
+	font-size: 22px;
+	line-height: 1.3;
+}
+
+.menu__commande-detail {
+	font-size: 13px;
+	line-height: 16px;
+}
+
+.menu__commande-bouton,
+.menu__commande-bouton:hover {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	height: 44px;
+	border-radius: var(--rayon-pilule);
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-rouge);
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.menu__liste {
+	margin: 0;
+	list-style: none;
+}
+
+.menu__lien,
+.menu__lien:hover {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 15px 0;
+	color: var(--couleur-noir);
+	font-family: var(--police-titre);
+	font-size: 26px;
+	line-height: 35px;
+}
+
+.menu__chevron {
+	color: var(--couleur-controle);
+}
+
+/* « Ma commande » quand une commande est en cours */
+.menu__lien--alerte,
+.menu__lien--alerte:hover,
+.menu__lien--alerte .menu__chevron {
+	color: var(--couleur-rouge);
+}
+
+.menu__libelle {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.menu__pastille {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: var(--couleur-rouge);
+	color: var(--couleur-blanc);
+	font-family: var(--police-texte);
+	font-size: 11px;
+	font-weight: 700;
+}
+
+/* Adresse, téléphone, horaires (menu, page « Infos & contact ») */
+.contact {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 0;
+	padding: 16px;
+	border-radius: var(--rayon-l);
+	background-color: var(--couleur-creme);
+	list-style: none;
+}
+
+.contact__ligne {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.contact__ligne a {
+	color: inherit;
+}
+
+.contact .icone {
+	color: var(--couleur-rouge);
+}
+
+
+/* 7. PIED (footer) ======================================================== */
+
+.site-footer {
+	margin: 0;
+	padding: 32px 0 40px;
+	background-color: var(--couleur-noir);
+	color: var(--couleur-controle);
+}
+
+/* « .site-footer » devant : Storefront colore déjà les liens du footer */
+.site-footer a,
+.site-footer a:hover {
+	color: var(--couleur-blanc);
+	text-decoration: none;
+}
+
+.pied {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.pied__logo img {
+	display: block;
+	width: 48px;
+	height: 56px;
+	object-fit: contain;
+}
+
+.pied__adresse {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.pied__nom {
+	color: var(--couleur-blanc);
+	font-family: var(--police-titre);
+	font-size: 22px;
+	line-height: 1.5;
+}
+
+.pied__texte {
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+.pied__colonnes {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 24px;
+}
+
+.pied__colonne {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.pied__titre {
+	color: var(--couleur-rouge);
+	font-family: var(--police-surtitre);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.23em;
+	line-height: 1.3;
+	text-transform: uppercase;
+}
+
+.pied__liste {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 0;
+	list-style: none;
+}
+
+.pied__lien {
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+.pied__legal {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 12px;
+	color: var(--couleur-gris);
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+.site-footer .pied__legal a {
+	color: var(--couleur-gris);
+}
+
+
+/* 8. ACCUEIL ============================================================== */
+
+/* Hero : photo + dégradé, 595 px de haut sur téléphone */
+.hero {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	min-height: 595px;
+	overflow: hidden;
+	background-color: var(--couleur-noir);
+	color: var(--couleur-blanc);
+}
+
+.hero__fond {
+	position: absolute;
+	inset: 0;
+}
+
+.hero__image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Dégradé noir → rouge par-dessus la photo */
+.hero::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(160deg, var(--couleur-degrade-noir) 0%, var(--couleur-degrade-rouge) 55%, var(--couleur-degrade-rouge) 100%);
+}
+
+.hero__interieur {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	width: 100%;
+	padding: 36px 16px 40px;
+}
+
+.hero__surtitre {
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+}
+
+.hero__titre {
+	display: flex;
+	flex-direction: column;
+	color: var(--couleur-blanc);
+	font-size: 66px;
+	line-height: 1.36;
+	text-transform: uppercase;
+}
+
+.hero__ligne {
+	display: flex;
+	align-items: center;
+	gap: 0.3em;
+	letter-spacing: -0.01em;
+}
+
+.hero__and {
+	color: var(--couleur-rouge);
+	font-size: 0.48em;
+	letter-spacing: 0.02em;
+}
+
+/* « COLLECT » en lettres contour */
+.hero__collect {
+	margin-top: -0.28em;
+	color: transparent;
+	-webkit-text-stroke: 1.5px var(--couleur-creme);
+}
+
+.hero__texte {
+	max-width: 292px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.22;
+}
+
+.hero__actions {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	max-width: 328px;
+	margin: 17px 8px 0;
+}
+
+.bouton--hero {
+	font-size: 14px;
+	font-weight: 500;
+}
+
+/* Sur la photo teintée de rouge, le bouton rouge se confondait avec le fond :
+   « Voir le menu » passe en blanc, texte rouge. */
+.hero .bouton--primaire,
+.hero .bouton--primaire:hover {
+	border-color: var(--couleur-blanc);
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-rouge);
+}
+
+.hero .bouton--primaire:hover {
+	background-color: var(--couleur-creme);
+}
+
+/* Blocs de l'accueil : nouveautés, produit star, à propos */
+.bloc-accueil,
+.bloc-accueil > .col-full {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.bloc-accueil {
+	padding-top: 32px;
+	padding-bottom: 32px;
+}
+
+.bloc-accueil .surtitre {
+	font-family: var(--police-surtitre);
+	font-size: 12px;
+	letter-spacing: 0.12em;
+}
+
+.bloc-accueil__titre {
+	margin-top: -12px;
+	font-size: 35px;
+	line-height: 1.3;
+}
+
+.bloc-accueil__texte {
+	color: var(--couleur-texte);
+	font-size: 14px;
+	letter-spacing: 0.03em;
+	line-height: 1.25;
+}
+
+.bloc-accueil--star {
+	padding-top: 0;
+}
+
+.bloc-accueil--creme {
+	padding-left: 0;
+	padding-right: 0;
+	background-color: var(--couleur-creme);
+}
+
+.bloc-accueil--creme > .col-full {
+	gap: 12px;
+	width: 100%;
+}
+
+/* Carte noire « Produit star » */
+.star {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 20px;
+	border-radius: var(--rayon-l);
+	background-color: var(--couleur-noir);
+}
+
+.star__image {
+	position: relative;
+	display: block;
+	height: 180px;
+	overflow: hidden;
+	border-radius: var(--rayon-m);
+}
+
+.star__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.star__badge {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.star .surtitre {
+	margin-bottom: -12px;
+}
+
+.star__nom {
+	color: var(--couleur-blanc);
+	font-size: 35px;
+	line-height: 1.3;
+}
+
+.star__meta {
+	margin-top: -10px;
+	color: var(--couleur-controle);
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+.star__achat {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.star__prix {
+	color: var(--couleur-blanc);
+	font-family: var(--police-titre);
+	font-size: 28px;
+	line-height: 1.3;
+}
+
+.star__achat .bouton {
+	flex: 1;
+}
+
+/* « 4,3 ★ Avis Google · 2000+ Clients · 6j/7 Ouvert » */
+.chiffres {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+	margin: 0;
+	list-style: none;
+}
+
+.chiffres__item {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 12px;
+	border-radius: var(--rayon-m);
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-gris);
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+.chiffres__item strong {
+	color: var(--couleur-rouge);
+	font-family: var(--police-titre);
+	font-size: 22px;
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+/* Texte libre de la page d'accueil, sous les blocs */
+.page-contenu {
+	padding-top: var(--espace-4xl);
+	padding-bottom: var(--espace-4xl);
+}
+
+
+/* 9. LA CARTE ============================================================= */
+
+.carte-menu__entete {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	max-width: 335px;
+	margin: 0 auto;
+	padding: 18px 0 20px;
+	text-align: center;
+}
+
+.carte-menu__titre {
+	font-size: 35px;
+	line-height: 1.5;
+}
+
+.carte-menu__intro {
+	color: var(--couleur-texte);
+	letter-spacing: 0.03em;
+	line-height: 1.2;
+}
+
+.carte-menu__vide {
+	padding: var(--espace-3xl) 0;
+	color: var(--couleur-texte);
+	text-align: center;
+}
+
+/* Pastilles des catégories : restent visibles sous le header */
+.pastilles {
+	position: sticky;
+	top: calc(var(--barre-admin, 0px) + var(--hauteur-entete));
+	z-index: 50;
+	margin: 0 calc(var(--marge-page) * -1);
+	padding: 10px 0;
+	background-color: var(--couleur-blanc);
+}
+
+.pastilles__liste {
+	display: flex;
+	gap: 8px;
+	padding: 0 var(--marge-page);
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.pastille {
+	flex-shrink: 0;
+	padding: 9px 16px;
+	border: 1px solid var(--couleur-bordure);
+	border-radius: var(--rayon-rond);
+	color: var(--couleur-noir);
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 16px;
+}
+
+.pastille:hover {
+	border-color: var(--couleur-noir);
+	color: var(--couleur-noir);
+}
+
+.pastille--active,
+.pastille--active:hover {
+	border-color: var(--couleur-rouge);
+	background-color: var(--couleur-rouge);
+	color: var(--couleur-blanc);
+}
+
+/* Une section par catégorie : « Nos Tacos » + ses produits */
+.section-menu {
+	margin-top: 22px;
+	/* le header et les pastilles ne cachent pas le titre après un clic */
+	scroll-margin-top: calc(var(--barre-admin, 0px) + var(--hauteur-entete) + 70px);
+}
+
+.section-menu__titre {
+	border-bottom: 1px solid #000;
+	font-size: 22px;
+	line-height: 1.5;
+}
+
+/* Téléphone : les cartes défilent à l'horizontale, au doigt.
+   Le bord droit s'efface, comme sur la maquette. */
+.section-menu__defilement {
+	display: flex;
+	gap: 8px;
+	padding: 6px 0 12px;
+	border-bottom: 1px solid #000;
+	overflow-x: auto;
+	scroll-snap-type: x proximity;
+	scrollbar-width: none;
+	-webkit-mask-image: linear-gradient(to right, #000 calc(100% - 50px), transparent);
+	mask-image: linear-gradient(to right, #000 calc(100% - 50px), transparent);
+}
+
+.section-menu__element {
+	flex: 0 0 120px;
+	scroll-snap-align: start;
+}
+
+/* Carte produit des carrousels (maquette 02) */
+.carte {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	height: 100%;
+	background-color: var(--couleur-blanc);
+	box-shadow: var(--ombre-carte);
+}
+
+.carte__image {
+	position: relative;
+	height: 90px;
+	background-color: var(--couleur-sable);
+}
+
+.carte__lien-image {
+	display: block;
+	height: 100%;
+}
+
+.carte__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.carte__corps,
+.carte__corps:hover {
+	display: flex;
+	flex-direction: column;
+	padding: 0 2px 4px;
+	color: var(--couleur-noir);
+}
+
+.carte__ligne {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 6px;
+	font-family: var(--police-titre);
+	font-size: 14px;
+	line-height: 1.3;
+}
+
+/* Première lettre en rouge, comme sur la maquette */
+.carte__nom::first-letter {
+	color: var(--couleur-rouge);
+}
+
+.carte__prix {
+	white-space: nowrap;
+}
+
+.carte__accroche {
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+/* Bouton rond « + » sur la photo (cartes, tuiles, desserts du panier) */
+.carte__ajouter,
+.tuile__ajouter,
+.mini-carte__ajouter {
+	position: absolute;
+	right: 6px;
+	bottom: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background-color: var(--couleur-rouge);
+	box-shadow: var(--ombre-bouton-rond);
+	color: var(--couleur-blanc);
+}
+
+.carte__ajouter:hover,
+.tuile__ajouter:hover,
+.mini-carte__ajouter:hover {
+	background-color: var(--couleur-rouge-fonce);
+	color: var(--couleur-blanc);
+}
+
+/* Pendant l'ajout au panier (.loading), puis ajouté (.added) : WooCommerce */
+.loading {
+	opacity: 0.5;
+}
+
+.added {
+	background-color: var(--couleur-noir);
+}
+
+.icone-coche,
+.added .icone-plus,
+.added_to_cart {
+	display: none;
+}
+
+.added .icone-coche {
+	display: block;
+}
+
+/* « Prêt en ~20 min » */
+.infos {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	max-width: 560px;
+	margin: 32px auto 0;
+	padding: 16px;
+	border-radius: var(--rayon-l);
+	background-color: var(--couleur-creme);
+}
+
+.infos__icone {
+	padding: 8px;
+	border-radius: 50%;
+	background-color: var(--couleur-rouge);
+	color: var(--couleur-blanc);
+}
+
+.infos__titre {
+	font-family: var(--police-titre);
+	font-size: 18px;
+}
+
+.infos__details {
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 16px;
+}
+
+
+/* 10. TUILE PRODUIT ET STOCK ============================================== */
+
+/* Tuile (accueil « Les nouveautés », fiche « Souvent pris avec ») */
+.tuiles {
+	display: flex;
+	gap: 12px;
+	margin: 0 calc(var(--marge-page) * -1);
+	padding: 0 var(--marge-page) 4px;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.tuile {
+	display: flex;
+	flex: 0 0 160px;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.tuile__image {
+	position: relative;
+	height: 120px;
+	overflow: hidden;
+	border-radius: var(--rayon-m);
+	background-color: var(--couleur-sable);
+}
+
+.tuile__lien-image {
+	display: block;
+	height: 100%;
+}
+
+.tuile__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.tuile__badge {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	padding: 4px 10px;
+	letter-spacing: 0;
+}
+
+.tuile__ajouter {
+	right: 8px;
+	bottom: 8px;
+	width: 30px;
+	height: 30px;
+}
+
+.tuile__corps,
+.tuile__corps:hover {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	color: var(--couleur-noir);
+}
+
+.tuile__ligne {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+	font-family: var(--police-titre);
+	font-size: 14px;
+	line-height: 1.25;
+}
+
+.tuile__prix {
+	color: var(--couleur-rouge);
+	white-space: nowrap;
+}
+
+.tuile__accroche {
+	color: var(--couleur-gris);
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+/* « ● En stock », « ● Stock faible · plus que 3 » */
+.stock-etat {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--couleur-vert);
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+.stock-etat::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: currentColor;
+}
+
+.stock-etat--faible {
+	color: var(--couleur-rouge);
+}
+
+.stock-etat--epuise {
+	color: var(--couleur-gris);
+}
+
+
+/* 11. FICHE PRODUIT ======================================================= */
+
+/* Photo pleine largeur, 230 px */
+.produit__image {
+	position: relative;
+	height: 230px;
+	margin: 0 calc(var(--marge-page) * -1);
+	overflow: hidden;
+	background-color: var(--couleur-sable);
+}
+
+.produit__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.produit__badge {
+	position: absolute;
+	top: 16px;
+	left: 20px;
+	padding: 6px 12px;
+	border-radius: 14px;
+}
+
+.produit__infos {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 20px 0 22px;
+}
+
+.produit__titre {
+	font-size: 35px;
+	line-height: 1.3;
+}
+
+.produit__description {
+	color: var(--couleur-texte);
+	font-size: 14px;
+	line-height: 21px;
+}
+
+/* Étiquettes « Frites + boisson incluses », « ~15 min » */
+.puces {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0;
+	padding-top: 4px;
+	list-style: none;
+}
+
+.puces__item {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 7px 12px;
+	border-radius: 14px;
+	background-color: var(--couleur-creme);
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 15px;
+}
+
+.puces__item .icone {
+	color: var(--couleur-rouge);
+}
+
+/* Informations produit : Composition, Allergènes, Valeurs nutritionnelles */
+.infos-produit {
+	border: 1px solid var(--couleur-bordure);
+	border-radius: var(--rayon-m);
+}
+
+.infos-produit__ligne {
+	padding: 14px 16px;
+}
+
+.infos-produit__ligne + .infos-produit__ligne {
+	border-top: 1px solid var(--couleur-ligne);
+}
+
+.infos-produit__titre {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 19px;
+	list-style: none;
+	cursor: pointer;
+}
+
+.infos-produit__titre::-webkit-details-marker {
+	display: none;
+}
+
+.infos-produit__titre .icone:first-child {
+	color: var(--couleur-rouge);
+}
+
+.infos-produit__chevron {
+	margin-left: auto;
+	color: var(--couleur-gris);
+	transition: transform 0.2s;
+}
+
+[open] > .infos-produit__titre .infos-produit__chevron {
+	transform: rotate(90deg);
+}
+
+.infos-produit__texte {
+	margin-top: 10px;
+	color: var(--couleur-texte);
+	font-size: 13px;
+	line-height: 1.4;
+}
+
+.allergenes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: 10px 0 0;
+	list-style: none;
+}
+
+.allergenes .badge {
+	padding: 4px 10px;
+}
+
+/* « 12.99€ » + état du stock */
+.produit__achat {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.produit__prix {
+	color: var(--couleur-rouge);
+	font-family: var(--police-titre);
+	font-size: 35px;
+	line-height: 1.3;
+}
+
+/* Groupe d'options : Taille, Viandes, Sauces… */
+.groupe-options {
+	margin: 0 calc(var(--marge-page) * -1);
+	padding: 22px var(--marge-page) 8px;
+	border: 0;
+	border-top: 8px solid var(--couleur-creme);
+}
+
+.groupe-options__entete {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding-bottom: 4px;
+}
+
+.groupe-options__titre {
+	font-family: var(--police-titre);
+	font-size: 20px;
+	line-height: 1.3;
+}
+
+.groupe-options__aide {
+	color: var(--couleur-texte);
+	font-size: 13px;
+	line-height: 16px;
+}
+
+.groupe-options__saisie {
+	margin: 10px 0 16px;
+}
+
+/* Une ligne de choix : case (ou rond), libellé, prix — 49 px */
+.option {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 0;
+	padding: 13px 0;
+	border-bottom: 1px solid var(--couleur-ligne);
+	cursor: pointer;
+}
+
+.option:last-child {
+	border-bottom: 0;
+}
+
+.option__libelle {
+	flex: 1;
+	font-size: 15px;
+	line-height: 18px;
+}
+
+.option__prix {
+	color: var(--couleur-texte);
+	font-size: 14px;
+	font-weight: 500;
+}
+
+/* Classes ajoutées par theme.js : choix coché / maximum atteint */
+.option--cochee .option__libelle {
+	font-weight: 600;
+}
+
+.option--cochee .option__prix {
+	color: var(--couleur-rouge);
+}
+
+.option--desactivee {
+	opacity: 0.35;
+	cursor: not-allowed;
+}
+
+/* Barre « − 1 + | Ajouter · 13.99€ » */
+.barre-commande__bouton {
+	flex: 1;
+	padding: 0 16px;
+	white-space: nowrap;
+}
+
+.produit__achat-standard {
+	padding: 20px 0;
+	border-top: 8px solid var(--couleur-creme);
+}
+
+/* Avis clients */
+.avis__carte {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 14px;
+	border-radius: var(--rayon-m);
+	background-color: var(--couleur-creme);
+}
+
+.avis__entete {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.avis__auteur {
+	font-size: 15px;
+	line-height: 19px;
+}
+
+.avis__note {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--couleur-gris);
+	font-size: 12px;
+}
+
+.avis__etoiles {
+	display: flex;
+	gap: 2px;
+	color: var(--couleur-controle);
+}
+
+.avis__etoile--pleine {
+	color: var(--couleur-rouge);
+	fill: currentColor;
+}
+
+.avis__texte {
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+
+/* 12. FENÊTRE « AJOUTÉ AU PANIER ! » ====================================== */
+
+.ajout {
+	position: fixed;
+	inset: 0;
+	z-index: 200;
+}
+
+.ajout__fond {
+	position: absolute;
+	inset: 0;
+	background-color: rgba(17, 17, 17, 0.55);
+}
+
+.ajout__feuille {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	max-width: 480px;
+	margin: 0 auto;
+	padding: 10px 20px 30px;
+	border-radius: 24px 24px 0 0;
+	background-color: var(--couleur-blanc);
+	outline: none;
+}
+
+.ajout__poignee {
+	width: 40px;
+	height: 5px;
+	border-radius: 3px;
+	background-color: var(--couleur-bordure);
+}
+
+.ajout__coche,
+.confirmation__coche {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background-color: var(--couleur-rouge);
+	box-shadow: 0 8px 20px rgba(218, 35, 30, 0.35);
+	color: var(--couleur-blanc);
+}
+
+.ajout__titre {
+	font-size: 28px;
+	line-height: 1.3;
+}
+
+.ajout__article {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	padding: 10px;
+	border-radius: var(--rayon-l);
+	background-color: var(--couleur-creme);
+}
+
+.ajout__image {
+	flex-shrink: 0;
+	width: 60px;
+	height: 60px;
+	overflow: hidden;
+	border-radius: var(--rayon-m);
+}
+
+.ajout__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.ajout__texte {
+	flex: 1;
+	min-width: 0;
+}
+
+.ajout__ligne {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+	font-family: var(--police-titre);
+	font-size: 17px;
+	line-height: 1.3;
+}
+
+.ajout__details {
+	margin-top: 4px;
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.ajout__question {
+	margin-bottom: -12px;
+	font-size: 17px;
+	font-weight: 700;
+	text-align: center;
+}
+
+.ajout__aide {
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+	text-align: center;
+}
+
+.ajout .bouton + .bouton {
+	margin-top: -6px;
+}
+
+
+/* 13. PANIER ============================================================== */
+
+.panier__articles {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding-bottom: 20px;
+}
+
+.panier-article {
+	display: flex;
+	gap: 12px;
+	padding: 12px;
+	border: 1px solid var(--couleur-ligne);
+	border-radius: var(--rayon-l);
+}
+
+.panier-article__image {
+	flex-shrink: 0;
+	width: 75px;
+	height: 76px;
+	overflow: hidden;
+	border-radius: var(--rayon-m);
+}
+
+.panier-article__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.panier-article__contenu {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 6px;
+	min-width: 0;
+}
+
+.panier-article__ligne {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	font-family: var(--police-titre);
+	font-size: 17px;
+	line-height: 1.2;
+}
+
+.panier-article__nom a {
+	color: var(--couleur-noir);
+}
+
+.panier-article__details {
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.panier-article__actions,
+.panier-article__liens {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+.panier-article__actions {
+	padding-top: 4px;
+}
+
+.panier-article__modifier {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.panier-article__supprimer {
+	color: var(--couleur-gris);
+}
+
+/* Quantité plus petite dans le panier (86 × 34) */
+.panier-article .quantity {
+	height: 34px;
+}
+
+.panier-article .quantity .qty {
+	font-size: 14px;
+}
+
+.panier-article .quantite__bouton {
+	width: 32px;
+	height: 31px;
+}
+
+.panier-article .quantite__bouton .icone,
+.panier-article .quantite__bouton svg {
+	width: 14px;
+	height: 14px;
+}
+
+/* « Un petit dessert ? » */
+.suggestion__grille {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+	padding-bottom: 14px;
+}
+
+.mini-carte {
+	overflow: hidden;
+	border: 1px solid var(--couleur-ligne);
+	border-radius: var(--rayon-l);
+}
+
+.mini-carte__image {
+	position: relative;
+	height: 70px;
+}
+
+.mini-carte__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.mini-carte__ajouter {
+	right: 8px;
+	bottom: 8px;
+	width: 24px;
+	height: 24px;
+}
+
+.mini-carte__corps,
+.mini-carte__corps:hover {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 8px 10px;
+	color: var(--couleur-noir);
+}
+
+.mini-carte__nom {
+	font-family: var(--police-titre);
+	font-size: 14px;
+	line-height: 1.15;
+}
+
+.mini-carte__prix {
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+/* Réception : Retrait / Livraison */
+.reception {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+}
+
+/* « relative » : le rond radio caché reste dans la carte */
+.reception__choix {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 12px;
+	border: 1px solid var(--couleur-bordure);
+	border-radius: var(--rayon-m);
+	color: var(--couleur-noir);
+	cursor: pointer;
+}
+
+.reception__choix[aria-disabled="true"] {
+	cursor: default;
+}
+
+/* Le rond radio est caché : toute la carte fait le choix */
+.reception__input {
+	position: absolute;
+	opacity: 0;
+}
+
+.reception__choix:has(.reception__input:focus-visible) {
+	outline: 2px solid var(--couleur-noir);
+}
+
+.reception__choix--actif {
+	border-color: var(--couleur-rouge);
+	background-color: var(--couleur-rouge-clair);
+}
+
+.reception__titre {
+	font-size: 15px;
+	line-height: 1.25;
+}
+
+.reception__aide {
+	color: var(--couleur-gris);
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+.reception__choix--actif .reception__aide {
+	color: var(--couleur-rouge);
+}
+
+/* Panneau du mode choisi (Retrait ou Livraison), l'autre est caché */
+.reception__panneau {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.reception__panneau[hidden],
+.creneaux[hidden] {
+	display: none;
+}
+
+/* Livraison : code postal et ville sur une ligne */
+.livraison__ville {
+	display: grid;
+	grid-template-columns: 7.5em 1fr;
+	gap: 10px;
+}
+
+/* Jours et plages de livraison : pastilles toujours lisibles
+   (pas de « choix » à cocher autour, comme pour le retrait) */
+.livraison .creneaux__heure {
+	color: var(--couleur-noir);
+}
+
+/* Adresse du restaurant */
+.magasin {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 14px;
+	border-radius: var(--rayon-l);
+	background-color: var(--couleur-creme);
+}
+
+.magasin__icone {
+	padding: 10px;
+	border-radius: 50%;
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-rouge);
+}
+
+.magasin__nom {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 17px;
+}
+
+.magasin__adresse {
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.retrait__ferme {
+	padding: 14px;
+	border-radius: var(--rayon-l);
+	background-color: var(--couleur-rouge-clair);
+	color: var(--couleur-rouge-fonce);
+	font-size: 14px;
+}
+
+/* « Dès que possible » / « Programmer un horaire » */
+.choix {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 0;
+	padding: 14px;
+	border: 1px solid var(--couleur-ligne);
+	border-radius: var(--rayon-l);
+	cursor: pointer;
+}
+
+.choix--creneaux {
+	flex-direction: column;
+	align-items: stretch;
+	cursor: default;
+}
+
+/* Classe ajoutée par theme.js sur le choix sélectionné */
+.choix--actif {
+	border-color: var(--couleur-rouge);
+	background-color: var(--couleur-rose);
+}
+
+.choix__principal {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	cursor: pointer;
+}
+
+.choix__texte {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.choix__titre {
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 18px;
+}
+
+.choix--actif .choix__titre {
+	font-weight: 600;
+}
+
+.choix__aide {
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.choix__icone {
+	color: var(--couleur-rouge);
+}
+
+/* Horaires 20:00, 20:15… : le rond radio est caché, la pastille fait le choix */
+.creneaux {
+	display: flex;
+	gap: 8px;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+/* « relative » : le rond caché reste dans la pastille, sinon il sort
+   de la liste et élargit toute la page sur téléphone */
+.creneaux__creneau {
+	position: relative;
+	flex-shrink: 0;
+}
+
+.creneaux__input {
+	position: absolute;
+	opacity: 0;
+}
+
+.creneaux__heure {
+	display: block;
+	padding: 9px 17px;
+	border: 1px solid var(--couleur-bordure);
+	border-radius: 18px;
+	background-color: var(--couleur-blanc);
+	color: #b5ada9;
+	font-size: 13px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.choix--actif .creneaux__heure {
+	color: var(--couleur-noir);
+}
+
+.creneaux__input:checked + .creneaux__heure {
+	border-color: var(--couleur-rouge);
+	background-color: var(--couleur-rouge);
+	color: var(--couleur-blanc);
+}
+
+.creneaux__input:focus-visible + .creneaux__heure {
+	outline: 2px solid var(--couleur-noir);
+}
+
+/* Code promo */
+.code-promo__ligne {
+	display: flex;
+	align-items: flex-end;
+	gap: 8px;
+}
+
+.code-promo__ligne .champ {
+	flex: 1;
+}
+
+.code-promo__bouton {
+	min-height: 48px;
+	padding: 0 20px;
+}
+
+.code-promo__applique {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 12px;
+	border-radius: var(--rayon-m);
+	background-color: var(--couleur-rouge-clair);
+	color: var(--couleur-rouge);
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.code-promo__applique span {
+	flex: 1;
+}
+
+/* Totaux (panier, paiement, confirmation) : « libellé … montant » */
+.totaux {
+	gap: 10px;
+}
+
+.totaux__ligne {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+	color: var(--couleur-texte);
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.totaux__ligne strong {
+	color: var(--couleur-noir);
+	font-weight: 600;
+	text-align: right;
+}
+
+.totaux__ligne--remise {
+	font-size: 15px;
+}
+
+.totaux .totaux__offert,
+.totaux__offert {
+	color: var(--couleur-vert);
+}
+
+.totaux__ligne--total {
+	align-items: center;
+	padding-top: 10px;
+	border-top: 1px solid var(--couleur-ligne);
+	color: var(--couleur-noir);
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.totaux__ligne--total strong {
+	font-family: var(--police-titre);
+	font-size: 22px;
+	font-weight: 400;
+}
+
+.cart-collaterals .cart_totals {
+	width: auto;
+	float: none;
+}
+
+
+/* 14. PAIEMENT ============================================================ */
+
+/* Étapes : Panier ✓ —— 2 Paiement —— 3 Confirmation */
+.etapes {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	padding: 6px 0 18px;
+	list-style: none;
+}
+
+.etapes__etape {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	gap: 6px;
+	color: #9c9490;
+	font-size: 12px;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.etapes__etape:last-child {
+	flex: none;
+}
+
+/* Trait entre deux étapes */
+.etapes__etape:not(:last-child)::after {
+	content: "";
+	flex: 1;
+	height: 2px;
+	margin: 0 6px 0 0;
+	background-color: var(--couleur-ligne);
+}
+
+.etapes__pastille {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 26px;
+	height: 26px;
+	border: 1.5px solid var(--couleur-pierre);
+	border-radius: 50%;
+	background-color: var(--couleur-pierre);
+	font-weight: 700;
+}
+
+.etapes__etape--faite,
+.etapes__etape--en-cours {
+	color: var(--couleur-noir);
+}
+
+.etapes__etape--en-cours {
+	font-weight: 700;
+}
+
+.etapes__etape--faite::after {
+	background-color: var(--couleur-rouge);
+}
+
+.etapes__etape--faite .etapes__pastille {
+	border-color: var(--couleur-rouge);
+	background-color: var(--couleur-rouge);
+	color: var(--couleur-blanc);
+}
+
+.etapes__etape--en-cours .etapes__pastille {
+	border-color: var(--couleur-rouge);
+	background-color: var(--couleur-blanc);
+	color: var(--couleur-rouge);
+}
+
+/* Coordonnées déjà saisies dans le panier (body.coordonnees-ok),
+   titre « Votre commande » de WooCommerce remplacé */
+.coordonnees-ok #customer_details,
+#order_review_heading {
+	display: none;
+}
+
+/* Formulaire sur une colonne (Storefront le met sur deux) */
+.woocommerce-checkout .col2-set,
+#order_review {
+	width: auto;
+	float: none;
+	margin-right: 0;
+}
+
+/* Moyens de paiement : une carte par moyen.
+   Mêmes sélecteurs que Storefront, pour passer devant lui. */
+#payment {
+	background: none;
+}
+
+#payment .payment_methods {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin: 0 0 22px;
+}
+
+#payment .payment_methods > li,
+#payment .payment_methods li:last-child:not(.woocommerce-notice) {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin: 0;
+	padding: 16px;
+	border: 1px solid var(--couleur-ligne);
+	border-radius: var(--rayon-l);
+	background: none;
+}
+
+/* Storefront cache le vrai rond (1 px) et dessine une icône Font Awesome
+   devant le libellé : on garde le rond de la maquette (section 5). */
+#payment .payment_methods li.wc_payment_method > input[type="radio"]:first-child {
+	position: static;
+	width: 22px;
+	height: 22px;
+	margin: 0;
+	overflow: visible;
+	clip: auto;
+	clip-path: none;
+	border: 1.5px solid var(--couleur-controle);
+}
+
+#payment .payment_methods li.wc_payment_method > input[type="radio"]:first-child:checked {
+	border-color: var(--couleur-rouge);
+}
+
+#payment .payment_methods > .wc_payment_method > label::before {
+	display: none;
+}
+
+/* Classe ajoutée par theme.js sur le moyen choisi */
+#payment .payment_methods > li.moyen-actif {
+	border: 1.5px solid var(--couleur-rouge);
+	background-color: var(--couleur-rose);
+}
+
+#payment .payment_methods .wc_payment_method > label {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	gap: 12px;
+	padding: 0;
+	cursor: pointer;
+}
+
+.moyen__texte {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.moyen__titre {
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 18px;
+}
+
+.moyen-actif .moyen__titre {
+	font-weight: 700;
+}
+
+.moyen__aide {
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.moyen__icone {
+	color: var(--couleur-texte);
+}
+
+.moyen-actif .moyen__icone {
+	color: var(--couleur-rouge);
+}
+
+#payment .payment_methods li .payment_box {
+	flex-basis: 100%;
+	margin: 0;
+	padding: 14px 0 0;
+	border-top: 1px solid var(--couleur-ligne);
+	background: none;
+	font-size: 12px;
+}
+
+#payment .payment_box::before {
+	display: none;
+}
+
+/* « Payer sur place » : texte d'information */
+.moyen__info {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.moyen__info .icone {
+	color: var(--couleur-rouge);
+}
+
+/* Formulaire de carte (démonstration) */
+.carte-bancaire {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+/* Encart « Mode test » + bouton qui remplit la carte de test */
+.carte-test {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	padding: 14px;
+	border-radius: var(--rayon-l);
+	background-color: var(--couleur-creme);
+}
+
+.carte-test .note {
+	align-items: flex-start;
+}
+
+.carte-test .note .icone {
+	flex-shrink: 0;
+	margin-top: 1px;
+}
+
+.carte-bancaire__ligne {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+}
+
+.case {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0;
+	color: var(--couleur-texte);
+	font-size: 13px;
+	cursor: pointer;
+}
+
+/* Récapitulatif « Votre commande » */
+.recap {
+	gap: 10px;
+}
+
+.recap__libelle--sur-place,
+.paiement-sur-place .recap__libelle--en-ligne {
+	display: none;
+}
+
+.paiement-sur-place .recap__libelle--sur-place {
+	display: inline;
+}
+
+#payment .place-order {
+	margin: 0;
+	padding: 0;
+	background: none;
+}
+
+.woocommerce-privacy-policy-text {
+	color: var(--couleur-gris);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+/* « Paiement 100 % sécurisé · 3D Secure » */
+.securite {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 4px 0 20px;
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.securite__icone {
+	color: var(--couleur-vert);
+}
+
+
+/* 15. CONFIRMATION ET SUIVI =============================================== */
+
+.confirmation {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding-bottom: 34px;
+}
+
+.confirmation__entete {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	padding: 28px 0 6px;
+	text-align: center;
+}
+
+.confirmation__coche {
+	width: 64px;
+	height: 64px;
+	margin-bottom: 8px;
+}
+
+/* Commande annulée : pastille noire */
+.confirmation__coche--annulee {
+	background-color: var(--couleur-noir);
+	box-shadow: none;
+}
+
+/* Carte noire « Prête vers 19h45 » */
+.heure {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 20px;
+	border-radius: 20px;
+	background-color: var(--couleur-noir);
+	color: var(--couleur-blanc);
+}
+
+.heure__entete {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.heure__libelle {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.heure__statut {
+	padding: 5px 12px;
+	border-radius: 12px;
+	background-color: var(--couleur-rouge);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.heure__principale {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.heure__valeur {
+	font-family: var(--police-titre);
+	font-size: 64px;
+	line-height: 1.12;
+}
+
+/* Plage de livraison « 22h00 – 22h30 » : plus longue qu'une heure */
+.heure__valeur--plage {
+	font-size: 36px;
+}
+
+.heure__delai {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	color: var(--couleur-controle);
+	font-size: 13px;
+}
+
+.heure__delai strong {
+	color: var(--couleur-blanc);
+	font-size: 18px;
+}
+
+/* Reçue —— En préparation —— Prête */
+.suivi-etapes {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	margin: 0;
+	list-style: none;
+}
+
+.suivi-etapes__etape {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+	width: 78px;
+	font-size: 11px;
+	font-weight: 600;
+}
+
+.suivi-etapes__icone {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: var(--couleur-rouge);
+}
+
+.suivi-etapes__etape--en-cours .suivi-etapes__icone {
+	box-shadow: 0 0 0 3px #5a1412;
+}
+
+.suivi-etapes__etape--a-venir {
+	color: #7a7472;
+}
+
+.suivi-etapes__etape--a-venir .suivi-etapes__icone {
+	background-color: #2a2a2a;
+}
+
+.suivi-etapes__lien {
+	width: 30px;
+	height: 3px;
+	margin-top: 19px;
+	background-color: #2a2a2a;
+}
+
+.suivi-etapes__lien--fait {
+	background-color: var(--couleur-rouge);
+}
+
+/* Cartes blanches bordées : code de retrait, adresse, détail */
+.carte-blanche {
+	overflow: hidden;
+	border: 1px solid var(--couleur-ligne);
+	border-radius: var(--rayon-l);
+}
+
+.code-retrait {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	padding: 22px 20px;
+	text-align: center;
+}
+
+.code-retrait__qr {
+	padding: 13px 13px 17px;
+	border: 1px solid var(--couleur-ligne);
+	border-radius: 14px;
+}
+
+.code-retrait__qr img,
+.code-retrait__qr canvas {
+	display: block;
+	width: 172px;
+	height: 172px;
+}
+
+.code-retrait__numero {
+	font-family: var(--police-titre);
+	font-size: 26px;
+	line-height: 1.5;
+}
+
+.code-retrait__aide {
+	color: var(--couleur-texte);
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.adresse__plan {
+	display: block;
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+}
+
+.adresse__contenu {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 16px;
+}
+
+.adresse__lieu {
+	display: flex;
+	gap: 10px;
+	color: var(--couleur-texte);
+	font-size: 12px;
+	line-height: 17px;
+}
+
+.adresse__lieu strong {
+	display: block;
+	margin-bottom: 2px;
+	color: var(--couleur-noir);
+	font-size: 15px;
+	line-height: 18px;
+}
+
+.adresse__lieu .icone {
+	color: var(--couleur-rouge);
+}
+
+.detail {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 16px;
+}
+
+.detail__paye {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--couleur-vert);
+	font-size: 12px;
+	font-weight: 600;
+}
+
+
+/* 16. BARRE « MA COMMANDE » =============================================== */
+
+.suivi,
+.suivi:hover {
+	position: fixed;
+	right: 16px;
+	bottom: 20px;
+	left: 16px;
+	z-index: 80;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	max-width: 440px;
+	margin: 0 auto;
+	padding: 12px 14px 12px 12px;
+	border-radius: 18px;
+	background-color: var(--couleur-noir);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+	color: var(--couleur-blanc);
+}
+
+.suivi__icone {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background-color: var(--couleur-rouge);
+}
+
+.suivi__texte {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+
+.suivi__numero {
+	color: var(--couleur-controle);
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.suivi__statut {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 17px;
+}
+
+.suivi__progression {
+	height: 4px;
+	border-radius: 2px;
+	background-color: #3a3a3a;
+}
+
+.suivi__avancee {
+	display: block;
+	height: 100%;
+	border-radius: 2px;
+	background-color: var(--couleur-rouge);
+}
+
+/* La barre ne cache pas le bas du footer */
+.avec-suivi .site-footer {
+	padding-bottom: 120px;
+}
+
+
+/* 17. MESSAGES WOOCOMMERCE, BOUTIQUE ====================================== */
+
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error {
+	margin: 12px 0;
+	border-left: 4px solid var(--couleur-rouge);
+	border-radius: var(--rayon-m);
+	background-color: var(--couleur-creme);
+	color: var(--couleur-noir);
+	font-size: 14px;
+}
+
+.woocommerce-error {
+	background-color: var(--couleur-rouge-clair);
+}
+
+.woocommerce-message::before,
+.woocommerce-info::before,
+.woocommerce-error::before {
+	color: var(--couleur-rouge);
+}
+
+.woocommerce-message a,
+.woocommerce-info a,
+.woocommerce-error a {
+	color: var(--couleur-rouge);
+}
+
+/* Pages de catégorie : grille de cartes */
+.site-main ul.products {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	gap: 16px 8px;
+}
+
+/* Storefront donne une largeur et un float à chaque produit */
+.site-main ul.products li.product {
+	width: auto;
+	float: none;
+	margin: 0;
+	text-align: left;
+}
+
+.site-main ul.products::before,
+.site-main ul.products::after {
+	content: none;
+}
+
+
+/* 18. ORDINATEUR (maquettes « F · Desktop ») ============================== */
+
+@media (min-width: 960px) {
+
+	/* Header : liens en ligne, « Mon compte » et pilule « Panier · 2 » */
+	.entete {
+		padding: 0 var(--marge-page);
+	}
+
+	.entete__logo img {
+		width: 48px;
+		height: 56px;
+	}
+
+	.entete__burger,
+	.menu {
+		display: none;
+	}
+
+	.entete__nav {
+		display: block;
+		margin-left: auto;
+	}
+
+	.entete__liste {
+		display: flex;
+		gap: 24px;
+		margin: 0;
+		list-style: none;
+	}
+
+	.entete__lien,
+	.entete__lien:hover {
+		color: var(--couleur-noir);
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	.entete__lien--actif,
+	.entete__lien--actif:hover {
+		color: var(--couleur-rouge);
+	}
+
+	.entete__actions {
+		gap: 20px;
+		margin-left: 40px;
+	}
+
+	.entete__compte,
+	.entete__compte:hover {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		color: var(--couleur-noir);
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	.entete__panier,
+	.home .entete__panier,
+	.entete__panier:hover {
+		display: flex;
+		gap: 6px;
+		width: auto;
+		height: auto;
+		padding: 8px 16px;
+		border-radius: var(--rayon-rond);
+		background-color: var(--couleur-rouge);
+		color: var(--couleur-blanc);
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	.entete__panier .icone {
+		width: 18px;
+		height: 18px;
+	}
+
+	.entete__panier-texte {
+		display: inline;
+	}
+
+	/* « Panier · 2 » : le compteur devient du texte */
+	.entete__compteur {
+		position: static;
+		min-width: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+		font-size: 14px;
+		line-height: inherit;
+	}
+
+	.entete__compteur::before {
+		content: "· ";
+	}
+
+	/* Accueil */
+	.hero {
+		align-items: center;
+		min-height: calc(100vh - var(--hauteur-entete) - var(--barre-admin, 0px));
+	}
+
+	.hero__interieur {
+		padding: 40px var(--marge-page);
+	}
+
+	.hero__titre {
+		font-size: 112px;
+	}
+
+	.hero__texte {
+		max-width: 540px;
+		font-size: 19px;
+	}
+
+	.hero__actions {
+		flex-direction: row;
+		max-width: 540px;
+		margin: 24px 0 0;
+	}
+
+	.bouton--hero {
+		flex: 1;
+		min-height: 64px;
+		font-size: 20px;
+	}
+
+	.tuiles {
+		margin: 0;
+		padding: 0;
+	}
+
+	.bloc-accueil > .bouton--large,
+	.bloc-accueil > .col-full > .bouton--large {
+		width: auto;
+		align-self: flex-start;
+	}
+
+	.star {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 32px;
+		align-content: center;
+	}
+
+	.star__image {
+		grid-row: span 5;
+		height: 320px;
+	}
+
+	.pied {
+		display: grid;
+		grid-template-columns: auto 1fr 2fr;
+		align-items: start;
+		column-gap: 48px;
+	}
+
+	.pied__legal {
+		grid-column: 1 / -1;
+	}
+
+	/* La carte : grille, plus de défilement horizontal */
+	.pastilles__liste {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.section-menu__titre {
+		font-size: 28px;
+	}
+
+	.section-menu__defilement {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+		gap: 16px;
+		-webkit-mask-image: none;
+		mask-image: none;
+	}
+
+	.carte__image {
+		height: 135px;
+	}
+
+	.carte__ligne {
+		font-size: 17px;
+	}
+
+	/* Fiche produit : photo à gauche (elle reste visible), choix à droite */
+	.produit__grille {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: start;
+		gap: 48px;
+	}
+
+	.produit__image {
+		position: sticky;
+		top: calc(var(--barre-admin, 0px) + var(--hauteur-entete) + 24px);
+		height: 420px;
+		margin: 0;
+		border-radius: var(--rayon-l);
+	}
+
+	.groupe-options,
+	.section-tunnel {
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	/* Panier, paiement, confirmation : une colonne centrée */
+	.woocommerce-cart .site-main,
+	.woocommerce-checkout .site-main {
+		max-width: var(--largeur-tunnel);
+		margin: 0 auto;
+	}
+
+	/* La barre d'action reste dans la page */
+	.barre-action {
+		position: static;
+		padding: 16px 0 0;
+		box-shadow: none;
+	}
+
+	.single-product .site-main,
+	.woocommerce-cart .site-main,
+	.woocommerce-checkout:not(.woocommerce-order-received) .site-main {
+		padding-bottom: 48px;
+	}
+}

@@ -1,0 +1,257 @@
+/* =========================================================================
+   TACOS FACTORY — page « Design System » (statique)
+   Mise en page de la page seulement : les composants affichés utilisent
+   les mêmes feuilles que le thème WordPress (variables.css, theme.css).
+   ========================================================================= */
+
+body {
+	margin: 0;
+	background-color: var(--couleur-creme);
+}
+
+/* Texte réservé aux lecteurs d'écran (fourni par Storefront sur le site) */
+.screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}
+
+.ds {
+	max-width: var(--largeur-max);
+	margin: 0 auto;
+	padding: 0 var(--marge-page) var(--espace-4xl);
+}
+
+/* Bandeau d'introduction */
+.ds-intro {
+	padding: var(--espace-4xl) 0 var(--espace-3xl);
+}
+
+.ds-intro__titre {
+	margin: 6px 0 var(--espace-m);
+	font-family: var(--police-titre);
+	font-size: 48px;
+	font-weight: 400;
+	line-height: 1.05;
+	text-transform: uppercase;
+}
+
+.ds-intro__texte {
+	max-width: 640px;
+	margin: 0 0 var(--espace-l);
+	color: var(--couleur-texte);
+}
+
+.ds-intro__liens {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--espace-m);
+}
+
+/* Sommaire */
+.ds-sommaire {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--espace-s);
+	margin: 0 0 var(--espace-3xl);
+	padding: 0;
+	list-style: none;
+}
+
+/* Sections */
+.ds-section {
+	margin-bottom: var(--espace-2xl);
+	padding: var(--espace-2xl);
+	border-radius: var(--rayon-l);
+	background-color: var(--couleur-blanc);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+	scroll-margin-top: var(--espace-l);
+}
+
+.ds-section__titre {
+	margin: 0 0 var(--espace-xs);
+	font-family: var(--police-titre);
+	font-size: 28px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.ds-section__texte {
+	margin: 0 0 var(--espace-xl);
+	color: var(--couleur-texte);
+	font-size: 14px;
+}
+
+.ds-sous-titre {
+	margin: var(--espace-2xl) 0 var(--espace-m);
+	color: var(--couleur-gris);
+	font-family: var(--police-surtitre);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.ds-sous-titre:first-of-type {
+	margin-top: 0;
+}
+
+/* Grilles d'exemples */
+.ds-grille {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: var(--espace-l);
+}
+
+.ds-grille--large {
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.ds-ligne {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--espace-m);
+}
+
+.ds-demo {
+	position: relative;
+	padding: var(--espace-l);
+	border: 1px dashed var(--couleur-bordure);
+	border-radius: var(--rayon-m);
+	background-color: var(--couleur-blanc);
+}
+
+.ds-demo--rouge {
+	background-color: var(--couleur-rouge);
+}
+
+.ds-demo--creme {
+	background-color: var(--couleur-creme);
+}
+
+.ds-demo--mobile {
+	max-width: 375px;
+}
+
+/* Légende sous un exemple : nom de la classe */
+.ds-code {
+	display: block;
+	margin-top: var(--espace-s);
+	color: var(--couleur-gris);
+	font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+	font-size: 12px;
+}
+
+/* Couleurs */
+.ds-couleur {
+	overflow: hidden;
+	border: 1px solid var(--couleur-ligne);
+	border-radius: var(--rayon-m);
+}
+
+.ds-couleur__pastille {
+	height: 72px;
+}
+
+.ds-couleur__infos {
+	padding: var(--espace-s) var(--espace-m);
+	font-size: 13px;
+}
+
+.ds-couleur__nom {
+	display: block;
+	font-weight: 600;
+}
+
+/* Typographie */
+.ds-typo {
+	padding: var(--espace-l) 0;
+	border-bottom: 1px solid var(--couleur-ligne);
+}
+
+.ds-typo:last-child {
+	border-bottom: 0;
+}
+
+.ds-typo__exemple {
+	margin: 0;
+}
+
+/* Espacements, rayons, ombres */
+.ds-espace {
+	display: flex;
+	align-items: center;
+	gap: var(--espace-m);
+	font-size: 13px;
+}
+
+.ds-espace__barre {
+	height: 16px;
+	border-radius: 3px;
+	background-color: var(--couleur-rouge);
+}
+
+.ds-boite {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 88px;
+	border: 1px solid var(--couleur-ligne);
+	background-color: var(--couleur-sable);
+	font-size: 13px;
+}
+
+/* Icônes */
+.ds-icones {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+	gap: var(--espace-m);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ds-icones li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--espace-s);
+	padding: var(--espace-m) var(--espace-xs);
+	border-radius: var(--rayon-m);
+	background-color: var(--couleur-creme);
+	font-size: 12px;
+}
+
+/* Les éléments fixés en bas de l'écran sur le site restent dans le flux ici */
+.ds .barre-action,
+.ds .suivi {
+	position: static;
+	box-shadow: none;
+}
+
+.ds .barre-action {
+	padding: var(--espace-l) 0 0;
+}
+
+.ds .site-header {
+	position: static;
+}
+
+/* Les cartes du menu défilent horizontalement sur le site */
+.ds .section-menu__defilement {
+	overflow-x: auto;
+}
+
+@media (max-width: 600px) {
+	.ds-intro__titre {
+		font-size: 36px;
+	}
+
+	.ds-section {
+		padding: var(--espace-l);
+	}
+}

@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tacos Factory — Design System</title>
+	<meta name="description" content="Design System du Click &amp; Collect Tacos Factory Limoges : couleurs, typographies, boutons, badges, champs, cartes produit et composants du parcours de commande.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hubot+Sans:wdth,wght@75..125,400..800&amp;display=swap">
+	<!-- Les mêmes feuilles que le thème WordPress -->
+	<link rel="stylesheet" href="css/variables.css">
+	<link rel="stylesheet" href="css/theme.css">
+	<!-- Mise en page de cette page seulement -->
+	<link rel="stylesheet" href="css/design-system.css">
+</head>
+<body>
+
+<header class="site-header">
+	<div class="col-full entete">
+		<div class="entete__logo">
+			<a href="#" class="custom-logo-link"><img src="img/logo.png" class="custom-logo" alt="Tacos Factory" width="112" height="132"></a>
+		</div>
+		<nav class="entete__nav" aria-label="Menu principal">
+			<ul class="entete__liste">
+				<li><a class="entete__lien entete__lien--actif" href="#">Accueil</a></li>
+				<li><a class="entete__lien" href="#">À propos</a></li>
+				<li><a class="entete__lien" href="#">La carte</a></li>
+				<li><a class="entete__lien" href="#">Infos &amp; contact</a></li>
+			</ul>
+		</nav>
+		<div class="entete__actions">
+			<a class="entete__compte" href="#">
+				<svg class="icone icone--user" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+				Mon compte
+			</a>
+			<a class="entete__panier" href="#">
+				<svg class="icone icone--shopping-bag" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+				<span class="entete__panier-texte">Panier</span>
+				<span class="entete__compteur">2</span>
+			</a>
+			<button type="button" class="entete__burger" aria-label="Menu">
+				<svg class="icone icone--menu entete__icone-ouvrir" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+			</button>
+		</div>
+	</div>
+</header>
+
+<main class="ds">
+
+	<section class="ds-intro">
+		<p class="surtitre">SAÉ 3.01 · Click &amp; Collect</p>
+		<h1 class="ds-intro__titre">Tacos Factory <span class="accent">Design System</span></h1>
+		<p class="ds-intro__texte">Les composants du site Click &amp; Collect de Tacos Factory Limoges, repris de la maquette Figma. Cette page statique utilise les mêmes feuilles CSS que le thème WordPress (variables.css et theme.css, méthode BEM, sans framework).</p>
+		<div class="ds-intro__liens">
+			<a class="bouton bouton--primaire" href="https://mmi.unilim.fr/~clerge1/site/">Voir le site</a>
+			<a class="bouton bouton--secondaire" href="https://www.figma.com/design/RdSZOmu72bPdsGrzqzkjA3/">Maquette Figma</a>
+		</div>
+	</section>
+
+	<ul class="ds-sommaire">
+		<li><a class="pastille" href="#couleurs">Couleurs</a></li>
+		<li><a class="pastille" href="#typographie">Typographie</a></li>
+		<li><a class="pastille" href="#espaces">Espaces &amp; ombres</a></li>
+		<li><a class="pastille" href="#icones">Icônes</a></li>
+		<li><a class="pastille" href="#boutons">Boutons</a></li>
+		<li><a class="pastille" href="#badges">Badges</a></li>
+		<li><a class="pastille" href="#formulaires">Formulaires</a></li>
+		<li><a class="pastille" href="#navigation">Navigation</a></li>
+		<li><a class="pastille" href="#cartes">Cartes</a></li>
+		<li><a class="pastille" href="#produit">Fiche produit</a></li>
+		<li><a class="pastille" href="#panier">Panier</a></li>
+		<li><a class="pastille" href="#messages">Messages</a></li>
+		<li><a class="pastille" href="#pied">Pied de page</a></li>
+	</ul>
+
+	<!-- COULEURS ============================================================ -->
+	<section class="ds-section" id="couleurs">
+		<h2 class="ds-section__titre">Couleurs</h2>
+		<p class="ds-section__texte">Variables Figma de la collection « Tacos Factory », reprises en variables CSS (<code>couleur/rouge</code> → <code>--couleur-rouge</code>).</p>
+
+		<p class="ds-sous-titre">Marque</p>
+		<div class="ds-grille">
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-rouge)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Rouge</span>--couleur-rouge · #DA231E</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-rouge-fonce)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Rouge foncé</span>--couleur-rouge-fonce · #B81B17</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-rouge-clair)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Rouge clair</span>--couleur-rouge-clair · #FDECEA</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-rose)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Rose (choix actif)</span>--couleur-rose · #FFF8F7</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-noir)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Noir</span>--couleur-noir · #111111</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-vert)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Vert (validé, en stock)</span>--couleur-vert · #1E9E4A</div></div>
+		</div>
+
+		<p class="ds-sous-titre">Neutres</p>
+		<div class="ds-grille">
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-texte)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Texte</span>--couleur-texte · #555555</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-gris)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Gris</span>--couleur-gris · #9B938E</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-controle)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Contrôle</span>--couleur-controle · #BDB6B2</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-bordure)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Bordure</span>--couleur-bordure · #DDD6D2</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-ligne)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Ligne</span>--couleur-ligne · #ECE7E4</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-pierre)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Pierre</span>--couleur-pierre · #F1EEEC</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-sable)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Sable</span>--couleur-sable · #F3EEEB</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-creme)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Crème (entête)</span>--couleur-creme · #F6F4F3</div></div>
+			<div class="ds-couleur"><div class="ds-couleur__pastille" style="background:var(--couleur-blanc)"></div><div class="ds-couleur__infos"><span class="ds-couleur__nom">Blanc</span>--couleur-blanc · #FFFFFF</div></div>
+		</div>
+	</section>
+
+	<!-- TYPOGRAPHIE ========================================================= -->
+	<section class="ds-section" id="typographie">
+		<h2 class="ds-section__titre">Typographie</h2>
+		<p class="ds-section__texte">Anton pour les titres, Inter pour le texte, Hubot Sans pour les surtitres.</p>
+
+		<div class="ds-typo">
+			<h1 class="page-titre__titre ds-typo__exemple">Click <span class="accent">&amp;</span> Collect</h1>
+			<span class="ds-code">Anton · .page-titre__titre · --police-titre</span>
+		</div>
+		<div class="ds-typo">
+			<h2 class="titre-section ds-typo__exemple"><span class="accent">Nos</span> Tacos</h2>
+			<span class="ds-code">Anton · .titre-section (mot accentué : .accent)</span>
+		</div>
+		<div class="ds-typo">
+			<p class="surtitre ds-typo__exemple">Notre carte</p>
+			<span class="ds-code">Hubot Sans Bold · .surtitre · --police-surtitre</span>
+		</div>
+		<div class="ds-typo">
+			<p class="ds-typo__exemple">Tacos généreux, burgers gourmands, wraps savoureux. Composez ou laissez-vous tenter par nos signatures.</p>
+			<span class="ds-code">Inter 16 px · texte courant · --police-texte</span>
+		</div>
+		<div class="ds-typo">
+			<p class="note ds-typo__exemple">Inter 12 px · notes, aides et légendes</p>
+			<span class="ds-code">.note</span>
+		</div>
+	</section>
+
+	<!-- ESPACES ============================================================= -->
+	<section class="ds-section" id="espaces">
+		<h2 class="ds-section__titre">Espaces, rayons et ombres</h2>
+		<p class="ds-section__texte">Mesures de la maquette mobile (375 px), en px.</p>
+
+		<p class="ds-sous-titre">Espacements</p>
+		<div class="ds-grille">
+			<div class="ds-espace"><span class="ds-espace__barre" style="width:4px"></span>--espace-xs · 4</div>
+			<div class="ds-espace"><span class="ds-espace__barre" style="width:8px"></span>--espace-s · 8</div>
+			<div class="ds-espace"><span class="ds-espace__barre" style="width:12px"></span>--espace-m · 12</div>
+			<div class="ds-espace"><span class="ds-espace__barre" style="width:16px"></span>--espace-l · 16</div>
+			<div class="ds-espace"><span class="ds-espace__barre" style="width:20px"></span>--espace-xl · 20</div>
+			<div class="ds-espace"><span class="ds-espace__barre" style="width:24px"></span>--espace-2xl · 24</div>
+			<div class="ds-espace"><span class="ds-espace__barre" style="width:32px"></span>--espace-3xl · 32</div>
+			<div class="ds-espace"><span class="ds-espace__barre" style="width:48px"></span>--espace-4xl · 48</div>
+		</div>
+
+		<p class="ds-sous-titre">Rayons</p>
+		<div class="ds-grille">
+			<div class="ds-boite" style="border-radius:var(--rayon-s)">--rayon-s · 6</div>
+			<div class="ds-boite" style="border-radius:var(--rayon-m)">--rayon-m · 12</div>
+			<div class="ds-boite" style="border-radius:var(--rayon-l)">--rayon-l · 16</div>
+			<div class="ds-boite" style="border-radius:var(--rayon-pilule)">--rayon-pilule · 25</div>
+		</div>
+
+		<p class="ds-sous-titre">Ombres (styles d'effet Figma « Ombre/… »)</p>
+		<div class="ds-grille">
+			<div class="ds-boite" style="background:var(--couleur-blanc);box-shadow:var(--ombre-carte)">--ombre-carte</div>
+			<div class="ds-boite" style="background:var(--couleur-blanc);box-shadow:var(--ombre-header)">--ombre-header</div>
+			<div class="ds-boite" style="background:var(--couleur-blanc);box-shadow:var(--ombre-bouton-rond)">--ombre-bouton-rond</div>
+			<div class="ds-boite" style="background:var(--couleur-blanc);box-shadow:var(--ombre-barre)">--ombre-barre</div>
+		</div>
+	</section>
+
+	<!-- ICONES ============================================================== -->
+	<section class="ds-section" id="icones">
+		<h2 class="ds-section__titre">Icônes</h2>
+		<p class="ds-section__texte">Jeu Lucide, en SVG intégré (<code>.icone .icone--nom</code>), couleur héritée du texte (<code>currentColor</code>).</p>
+		<ul class="ds-icones">
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>shopping-bag</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>user</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>menu</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>x</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>plus</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg>minus</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>check</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>chevron-right</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.98-3.98L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/><path d="m15 5 4 4"/></svg>pencil</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>trash</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.830 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></svg>store</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.650a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>truck</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>clock</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>info</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>alert</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>leaf</li>
+			<li><svg class="icone" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/></svg>chef-hat</li>
+		</ul>
+	</section>
+
+	<!-- BOUTONS ============================================================= -->
+	<section class="ds-section" id="boutons">
+		<h2 class="ds-section__titre">Boutons</h2>
+		<p class="ds-section__texte">Composant Figma « Bouton » : <code>.bouton</code> + une variante.</p>
+		<div class="ds-grille">
+			<div class="ds-demo"><a class="bouton bouton--primaire" href="#">Voir le menu</a><span class="ds-code">.bouton--primaire</span></div>
+			<div class="ds-demo"><a class="bouton bouton--secondaire" href="#">Continuer sur le site</a><span class="ds-code">.bouton--secondaire</span></div>
+			<div class="ds-demo"><button type="button" class="bouton bouton--sombre">Appliquer</button><span class="ds-code">.bouton--sombre</span></div>
+			<div class="ds-demo"><a class="bouton bouton--annuler" href="#">Annuler ma commande</a><span class="ds-code">.bouton--annuler</span></div>
+			<div class="ds-demo"><button type="button" class="bouton bouton--secondaire bouton--petit">Remplir avec la carte de test</button><span class="ds-code">.bouton--petit</span></div>
+			<div class="ds-demo ds-demo--rouge"><a class="bouton bouton--contour" href="#">Click and Collect</a><span class="ds-code" style="color:#fff">.bouton--contour (sur photo ou fond rouge)</span></div>
+		</div>
+		<p class="ds-sous-titre">Pleine largeur, barre d'action</p>
+		<div class="ds-demo ds-demo--mobile">
+			<div class="barre-action">
+				<button type="button" class="bouton bouton--primaire bouton--large">Passer au paiement · 7.97€</button>
+			</div>
+			<span class="ds-code">.barre-action (fixée en bas de l'écran sur le site) + .bouton--large</span>
+		</div>
+	</section>
+
+	<!-- BADGES ============================================================== -->
+	<section class="ds-section" id="badges">
+		<h2 class="ds-section__titre">Badges et états</h2>
+		<p class="ds-section__texte">Badges des options, allergènes et avis ; état du stock sur les tuiles produit.</p>
+		<div class="ds-ligne">
+			<span class="badge badge--promo">Best-seller</span>
+			<span class="badge badge--promo">★ Produit star</span>
+			<span class="badge badge--obligatoire">Obligatoire</span>
+			<span class="badge">Optionnel</span>
+			<span class="badge badge--complet">Complet</span>
+			<span class="badge badge--erreur">Choix requis</span>
+			<span class="badge badge--verifie">Achat vérifié</span>
+		</div>
+		<span class="ds-code">.badge, .badge--promo, .badge--obligatoire, .badge--complet, .badge--erreur, .badge--verifie</span>
+		<p class="ds-sous-titre">Stock</p>
+		<div class="ds-ligne">
+			<p class="stock-etat">En stock</p>
+			<p class="stock-etat stock-etat--faible">Stock faible · plus que 3</p>
+			<p class="stock-etat stock-etat--epuise">Épuisé</p>
+		</div>
+		<span class="ds-code">.stock-etat, .stock-etat--faible, .stock-etat--epuise</span>
+	</section>
+
+	<!-- FORMULAIRES ========================================================= -->
+	<section class="ds-section" id="formulaires">
+		<h2 class="ds-section__titre">Formulaires</h2>
+		<p class="ds-section__texte">Composants Figma « Champ », « Option » et « Quantité ».</p>
+		<div class="ds-grille ds-grille--large">
+			<div class="ds-demo">
+				<p class="champ">
+					<label class="champ__label" for="ds-prenom">Prénom</label>
+					<input class="champ__saisie" id="ds-prenom" type="text" value="Camille">
+				</p>
+				<span class="ds-code">.champ, .champ__label, .champ__saisie</span>
+			</div>
+			<div class="ds-demo">
+				<p class="champ">
+					<label class="champ__label" for="ds-tel">Téléphone</label>
+					<input class="champ__saisie champ__saisie--erreur" id="ds-tel" type="tel" value="06 12">
+					<span class="champ__aide">Indiquez un numéro à 10 chiffres.</span>
+				</p>
+				<span class="ds-code">.champ__saisie--erreur, .champ__aide</span>
+			</div>
+			<div class="ds-demo">
+				<div class="code-promo__ligne">
+					<p class="champ">
+						<label class="champ__label champ__label--fonce" for="ds-code">Vous avez un code ?</label>
+						<input type="text" class="champ__saisie" id="ds-code" placeholder="TACOS10">
+					</p>
+					<button type="button" class="bouton bouton--sombre code-promo__bouton">Appliquer</button>
+				</div>
+				<span class="ds-code">.code-promo__ligne</span>
+			</div>
+			<div class="ds-demo">
+				<div class="quantity">
+					<button type="button" class="quantite__bouton quantite__bouton--moins" aria-label="Retirer un"><svg class="icone" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+					<input type="number" class="input-text qty text" value="2" min="1" aria-label="Quantité">
+					<button type="button" class="quantite__bouton quantite__bouton--plus" aria-label="Ajouter un"><svg class="icone" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+				</div>
+				<span class="ds-code">.quantity, .quantite__bouton (ajoutés par theme.js)</span>
+			</div>
+			<div class="ds-demo">
+				<label class="case"><input type="checkbox" checked> Enregistrer ma carte pour la prochaine fois</label>
+				<span class="ds-code">.case</span>
+			</div>
+		</div>
+
+		<p class="ds-sous-titre">Groupes d'options (fiche produit)</p>
+		<div class="ds-grille ds-grille--large">
+			<div class="ds-demo">
+				<fieldset class="groupe-options groupe-options--taille">
+					<legend class="screen-reader-text">Taille</legend>
+					<div class="groupe-options__entete" aria-hidden="true">
+						<div>
+							<p class="groupe-options__titre">Taille</p>
+							<p class="groupe-options__aide">Choisissez 1 option</p>
+						</div>
+						<span class="badge badge--obligatoire groupe-options__badge">Obligatoire</span>
+					</div>
+					<label class="option">
+						<input class="option__input" type="radio" name="ds_taille">
+						<span class="option__libelle">Simple · 1 viande</span>
+						<span class="option__prix">9.99€</span>
+					</label>
+					<label class="option option--cochee">
+						<input class="option__input" type="radio" name="ds_taille" checked>
+						<span class="option__libelle">Double · 2 viandes</span>
+						<span class="option__prix">12.99€</span>
+					</label>
+					<label class="option">
+						<input class="option__input" type="radio" name="ds_taille">
+						<span class="option__libelle">Triple · 3 viandes</span>
+						<span class="option__prix">14.99€</span>
+					</label>
+				</fieldset>
+				<span class="ds-code">.groupe-options, .option, .option--cochee (choix unique)</span>
+			</div>
+			<div class="ds-demo">
+				<fieldset class="groupe-options">
+					<legend class="screen-reader-text">Viandes</legend>
+					<div class="groupe-options__entete" aria-hidden="true">
+						<div>
+							<p class="groupe-options__titre">Viandes</p>
+							<p class="groupe-options__aide">Choisissez 2 viandes</p>
+						</div>
+						<span class="badge badge--complet groupe-options__badge">Complet</span>
+					</div>
+					<label class="option option--cochee">
+						<input class="option__input" type="checkbox" checked>
+						<span class="option__libelle">Poulet mariné</span>
+						<span class="option__prix"></span>
+					</label>
+					<label class="option option--cochee">
+						<input class="option__input" type="checkbox" checked>
+						<span class="option__libelle">Merguez</span>
+						<span class="option__prix">+0.50€</span>
+					</label>
+					<label class="option option--desactivee">
+						<input class="option__input" type="checkbox" disabled>
+						<span class="option__libelle">Cordon bleu</span>
+						<span class="option__prix"></span>
+					</label>
+				</fieldset>
+				<span class="ds-code">.option--desactivee quand le maximum est atteint (choix multiple)</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- NAVIGATION ========================================================== -->
+	<section class="ds-section" id="navigation">
+		<h2 class="ds-section__titre">Navigation</h2>
+		<p class="ds-section__texte">Entête (composant Figma « Header », en haut de cette page), pastilles de la carte, étapes du paiement.</p>
+		<p class="ds-sous-titre">Pastilles de catégories</p>
+		<div class="ds-demo">
+			<nav class="pastilles" aria-label="Catégories de la carte" style="position:static">
+				<div class="pastilles__liste">
+					<a class="pastille pastille--active" href="#">Tacos</a>
+					<a class="pastille" href="#">Wraps</a>
+					<a class="pastille" href="#">Burgers</a>
+					<a class="pastille" href="#">Accompagnements</a>
+					<a class="pastille" href="#">Boissons</a>
+					<a class="pastille" href="#">Desserts</a>
+				</div>
+			</nav>
+			<span class="ds-code">.pastilles, .pastille, .pastille--active</span>
+		</div>
+		<p class="ds-sous-titre">Étapes du tunnel</p>
+		<div class="ds-demo ds-demo--mobile">
+			<ol class="etapes">
+				<li class="etapes__etape etapes__etape--faite"><span class="etapes__pastille"><svg class="icone" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="etapes__libelle">Panier</span></li>
+				<li class="etapes__etape etapes__etape--en-cours" aria-current="step"><span class="etapes__pastille">2</span><span class="etapes__libelle">Paiement</span></li>
+				<li class="etapes__etape"><span class="etapes__pastille">3</span><span class="etapes__libelle">Confirmation</span></li>
+			</ol>
+			<span class="ds-code">.etapes, .etapes__etape--faite, .etapes__etape--en-cours</span>
+		</div>
+		<p class="ds-sous-titre">Barre « Ma commande »</p>
+		<div class="ds-demo ds-demo--mobile">
+			<a class="suivi" href="#">
+				<span class="suivi__icone"><svg class="icone" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/></svg></span>
+				<span class="suivi__texte">
+					<span class="suivi__numero">Ma commande · TF-0427</span>
+					<span class="suivi__statut">En préparation · prête vers 19h45</span>
+					<span class="suivi__progression"><span class="suivi__avancee" style="width:60%"></span></span>
+				</span>
+				<svg class="icone suivi__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+			</a>
+			<span class="ds-code">.suivi (fixée en bas de l'écran sur le site pendant une commande en cours)</span>
+		</div>
+	</section>
+
+	<!-- CARTES ============================================================== -->
+	<section class="ds-section" id="cartes">
+		<h2 class="ds-section__titre">Cartes produit</h2>
+		<p class="ds-section__texte">Carte de la page « La carte » et mini-carte des suggestions du panier.</p>
+		<div class="ds-grille">
+			<div class="carte">
+				<div class="carte__image">
+					<a href="#" class="carte__lien-image" tabindex="-1" aria-hidden="true"><img width="476" height="359" src="img/tacos.jpg" alt="Tacos Simple"></a>
+					<a href="#" class="carte__ajouter" aria-label="Composer « Tacos Simple »"><svg class="icone" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></a>
+				</div>
+				<a href="#" class="carte__corps">
+					<span class="carte__ligne"><span class="carte__nom">Tacos Simple</span><span class="carte__prix">9.99€</span></span>
+					<span class="carte__accroche">-Frite et boisson incluse</span>
+				</a>
+			</div>
+			<div class="carte">
+				<div class="carte__image">
+					<a href="#" class="carte__lien-image" tabindex="-1" aria-hidden="true"><img width="480" height="360" src="img/cheese.jpg" alt="Cheese"></a>
+					<a href="#" class="carte__ajouter" aria-label="Composer « Cheese »"><svg class="icone" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></a>
+				</div>
+				<a href="#" class="carte__corps">
+					<span class="carte__ligne"><span class="carte__nom">Cheese</span><span class="carte__prix">8.99€</span></span>
+					<span class="carte__accroche">-Frite et boisson incluse</span>
+				</a>
+			</div>
+			<div class="carte">
+				<div class="carte__image">
+					<a href="#" class="carte__lien-image" tabindex="-1" aria-hidden="true"><img width="480" height="360" src="img/coca-cola.jpg" alt="Coca-Cola"></a>
+					<a href="#" class="carte__ajouter" aria-label="Ajouter « Coca-Cola »"><svg class="icone" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></a>
+				</div>
+				<a href="#" class="carte__corps">
+					<span class="carte__ligne"><span class="carte__nom">Coca-Cola</span><span class="carte__prix">1.99€</span></span>
+					<span class="carte__accroche">-Canette 33cl</span>
+				</a>
+			</div>
+		</div>
+		<span class="ds-code">.carte, .carte__image, .carte__ajouter, .carte__corps</span>
+
+		<p class="ds-sous-titre">Mini-carte (« Envie d'un dessert ? » dans le panier)</p>
+		<div class="ds-grille">
+			<div class="mini-carte">
+				<div class="mini-carte__image">
+					<img width="480" height="360" src="img/tiramisu.jpg" alt="Tiramisu">
+					<a href="#" class="mini-carte__ajouter" aria-label="Ajouter « Tiramisu » au panier"><svg class="icone" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></a>
+				</div>
+				<a class="mini-carte__corps" href="#"><span class="mini-carte__nom">Tiramisu</span><span class="mini-carte__prix">3.49€</span></a>
+			</div>
+		</div>
+		<span class="ds-code">.mini-carte</span>
+	</section>
+
+	<!-- FICHE PRODUIT ======================================================= -->
+	<section class="ds-section" id="produit">
+		<h2 class="ds-section__titre">Fiche produit</h2>
+		<p class="ds-section__texte">Informations repliables (champs Secure Custom Fields) et bouton d'ajout au panier.</p>
+		<div class="ds-grille ds-grille--large">
+			<div class="ds-demo">
+				<span class="badge badge--promo">Best-seller</span>
+				<div class="infos-produit">
+					<details class="infos-produit__ligne">
+						<summary class="infos-produit__titre"><svg class="icone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>Composition<svg class="icone infos-produit__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></summary>
+						<p class="infos-produit__texte">Galette de blé grillée, frites, sauce fromagère maison, viandes et sauces au choix.</p>
+					</details>
+					<details class="infos-produit__ligne" open>
+						<summary class="infos-produit__titre"><svg class="icone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>Allergènes<svg class="icone infos-produit__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></summary>
+						<ul class="allergenes">
+							<li class="badge badge--obligatoire">GLUTEN</li>
+							<li class="badge badge--obligatoire">LAIT</li>
+							<li class="badge badge--obligatoire">ŒUF</li>
+							<li class="badge badge--obligatoire">MOUTARDE</li>
+						</ul>
+					</details>
+				</div>
+				<span class="ds-code">.infos-produit, .allergenes</span>
+			</div>
+			<div class="ds-demo">
+				<button type="button" class="bouton bouton--primaire bouton--large barre-commande__bouton">Ajouter · 12.99€</button>
+				<span class="ds-code">.barre-commande__bouton (prix mis à jour selon les options)</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- PANIER ============================================================== -->
+	<section class="ds-section" id="panier">
+		<h2 class="ds-section__titre">Panier et réception</h2>
+		<p class="ds-section__texte">Mode de réception, créneaux de retrait, article du panier et totaux.</p>
+		<div class="ds-grille ds-grille--large">
+			<div class="ds-demo">
+				<div class="reception" role="radiogroup" aria-label="Mode de réception">
+					<label class="reception__choix reception__choix--actif">
+						<input class="reception__input" type="radio" name="ds_reception" checked>
+						<svg class="icone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg>
+						<strong class="reception__titre">Retrait</strong>
+						<span class="reception__aide">Gratuit · Click &amp; Collect</span>
+					</label>
+					<label class="reception__choix">
+						<input class="reception__input" type="radio" name="ds_reception">
+						<svg class="icone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+						<strong class="reception__titre">Livraison</strong>
+						<span class="reception__aide">Dès 2.90€ · selon le poids</span>
+					</label>
+				</div>
+				<span class="ds-code">.reception, .reception__choix--actif</span>
+			</div>
+			<div class="ds-demo">
+				<label class="choix choix--actif">
+					<input class="choix__input" type="radio" name="ds_mode" checked>
+					<span class="choix__texte">
+						<strong class="choix__titre">Dès que possible</strong>
+						<small class="choix__aide">Prête vers 19h30 · environ 20 min</small>
+					</span>
+					<svg class="icone choix__icone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+				</label>
+				<div class="creneaux" role="radiogroup" aria-label="Horaires de retrait">
+					<label class="creneaux__creneau"><input class="creneaux__input" type="radio" name="ds_heure"><span class="creneaux__heure">19:30</span></label>
+					<label class="creneaux__creneau"><input class="creneaux__input" type="radio" name="ds_heure" checked><span class="creneaux__heure">19:45</span></label>
+					<label class="creneaux__creneau"><input class="creneaux__input" type="radio" name="ds_heure"><span class="creneaux__heure">20:00</span></label>
+					<label class="creneaux__creneau"><input class="creneaux__input" type="radio" name="ds_heure"><span class="creneaux__heure">20:15</span></label>
+				</div>
+				<span class="ds-code">.choix, .creneaux, .creneaux__creneau</span>
+			</div>
+			<div class="ds-demo">
+				<div class="panier-article">
+					<div class="panier-article__image"><a href="#" tabindex="-1"><img width="480" height="360" src="img/frites.jpg" alt="Frites"></a></div>
+					<div class="panier-article__contenu">
+						<p class="panier-article__ligne">
+							<span class="panier-article__nom"><a href="#">Frites</a></span>
+							<span class="panier-article__prix">5.98€</span>
+						</p>
+						<p class="panier-article__details">Sauce Algérienne</p>
+						<div class="panier-article__actions">
+							<div class="panier-article__liens">
+								<a class="panier-article__modifier" href="#"><svg class="icone" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.98-3.98L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/><path d="m15 5 4 4"/></svg>Modifier</a>
+								<a href="#" class="panier-article__supprimer" aria-label="Retirer Frites du panier"><svg class="icone" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></a>
+							</div>
+							<div class="quantity">
+								<button type="button" class="quantite__bouton quantite__bouton--moins" aria-label="Retirer un"><svg class="icone" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+								<input type="number" class="input-text qty text" value="2" min="0" aria-label="Quantité">
+								<button type="button" class="quantite__bouton quantite__bouton--plus" aria-label="Ajouter un"><svg class="icone" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<span class="ds-code">.panier-article</span>
+			</div>
+			<div class="ds-demo">
+				<div class="totaux">
+					<p class="totaux__ligne"><span>Sous-total (3 articles)</span><strong>6.47€</strong></p>
+					<p class="totaux__ligne"><span>Frais de préparation</span><strong>1.50€</strong></p>
+					<p class="totaux__ligne totaux__ligne--remise"><span>Code TACOS10</span><strong>−0.65€</strong></p>
+					<p class="note note--claire"><svg class="icone" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>Frais de préparation de 1.50€ offerts dès 15€ d’achat.</p>
+					<p class="totaux__ligne totaux__ligne--total"><span>Total</span><strong>7.32€</strong></p>
+				</div>
+				<span class="ds-code">.totaux, .totaux__ligne--remise, .totaux__ligne--total</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- MESSAGES ============================================================ -->
+	<section class="ds-section" id="messages">
+		<h2 class="ds-section__titre">Messages</h2>
+		<p class="ds-section__texte">Notes d'information et messages de WooCommerce.</p>
+		<div class="ds-grille ds-grille--large">
+			<div class="ds-demo">
+				<p class="note"><svg class="icone" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>On vous envoie un SMS dès que c’est prêt.</p>
+				<span class="ds-code">.note</span>
+			</div>
+			<div class="ds-demo">
+				<p class="note note--encadre"><svg class="icone" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>Livraison à Limoges (87000, 87100, 87280).</p>
+				<span class="ds-code">.note--encadre</span>
+			</div>
+			<div class="ds-demo">
+				<p class="moyen__info"><svg class="icone" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>Votre commande est lancée en cuisine dès validation. Réglez au comptoir en présentant votre QR code de retrait.</p>
+				<span class="ds-code">.moyen__info (« Payer sur place »)</span>
+			</div>
+			<div class="ds-demo">
+				<div class="woocommerce-message" role="status">« Tacos Double » a été ajouté à votre panier.</div>
+				<div class="woocommerce-error" role="alert" style="margin-top:12px">Le code promo « TACOS5 » n’existe pas.</div>
+				<span class="ds-code">.woocommerce-message, .woocommerce-error</span>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<!-- PIED DE PAGE ========================================================== -->
+<footer class="site-footer" id="pied">
+	<div class="col-full">
+		<div class="pied">
+			<div class="pied__logo"><a href="#" class="custom-logo-link"><img src="img/logo.png" class="custom-logo" alt="Tacos Factory" width="112" height="132"></a></div>
+			<div class="pied__adresse">
+				<p class="pied__nom">Tacos Factory Limoges</p>
+				<p class="pied__texte">44 Av. du Maréchal de Lattre de Tassigny, 87000 Limoges</p>
+				<p class="pied__texte">Mar – Dim · 18h30 – 23h00 · 09 88 47 24 57</p>
+			</div>
+			<div class="pied__colonnes">
+				<nav class="pied__colonne" aria-label="Navigation">
+					<p class="pied__titre">Navigation</p>
+					<ul class="pied__liste">
+						<li><a class="pied__lien" href="#">Accueil</a></li>
+						<li><a class="pied__lien" href="#">La carte</a></li>
+						<li><a class="pied__lien" href="#">L’équipe</a></li>
+						<li><a class="pied__lien" href="#">Infos &amp; contact</a></li>
+					</ul>
+				</nav>
+				<nav class="pied__colonne" aria-label="Mon espace">
+					<p class="pied__titre">Mon espace</p>
+					<ul class="pied__liste">
+						<li><a class="pied__lien" href="#">Mon compte</a></li>
+						<li><a class="pied__lien" href="#">Mes commandes</a></li>
+						<li><a class="pied__lien" href="#">Suivre ma commande</a></li>
+					</ul>
+				</nav>
+			</div>
+			<p class="pied__legal">
+				<a href="#">Mentions légales</a>
+				<a href="#">CGV</a>
+				<a href="#">Confidentialité</a>
+				<span>&copy; 2026 Tacos Factory</span>
+			</p>
+		</div>
+	</div>
+</footer>
+
+</body>
+</html>
